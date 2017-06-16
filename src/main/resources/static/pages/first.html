@@ -1,0 +1,103 @@
+<!--<header class="bar bar-nav ">
+    <a class="button button-link button-nav pull-left back" href="/">
+        <span class="icon icon-left" style=""></span>
+        返回
+    </a>
+    <h1 class='title'></h1>
+</header>-->
+
+<div class="content">
+    <!--<div class="top-bar" style="font-size:13px;width:98%;margin:0 auto">
+        toolbar
+    </div>-->
+    <div style="width:100%;position: relative">
+        <div id="final-table" style="width:98%;height:200px;margin: 0 auto;position:relative;"></div>
+        <div id="final-table-foot" style="width:98%;height:200px;margin: 0 auto;position:relative;"></div>
+    </div>
+</div>
+
+
+<script>
+
+    p2.initPage = function () {
+        g.queryData(p1.date, p1.geturl, function (data) {
+            var o = '{"id":13,"configName":"2.1_月度核心指标_rt_month_kpi","configType":"1","details":{"month":{"id":567,"values":[{"time_key":20170615,"time_name":"2017-06-15","register_nums":53373,"real_register_nums":53373,"realname_nums":45116,"bind_nums":44423,"new_trans_nums":40503,"new_trans_values":45195.109291,"today_regtrans_nums":36304,"trans_nums":107348,"trans_values":338598.795403,"report_time":"2017-06-15 23:49:48","kpi_values":260236.64}],"errorMessage":""},"days":{"id":566,"values":[{"time_key":20170601,"time_name":"2017-06-01","register_nums":1928,"real_register_nums":1928,"realname_nums":1434,"bind_nums":1467,"new_trans_nums":1270,"new_trans_values":2319.608600,"today_regtrans_nums":713,"trans_nums":6877,"trans_values":21996.262566,"report_time":"2017-06-01 23:59:57","kpi_values":15280.41},{"time_key":20170602,"time_name":"2017-06-02","register_nums":2017,"real_register_nums":2017,"realname_nums":1547,"bind_nums":1515,"new_trans_nums":1305,"new_trans_values":2190.242195,"today_regtrans_nums":851,"trans_nums":5950,"trans_values":17271.508330,"report_time":"2017-06-02 23:58:35","kpi_values":12711.80},{"time_key":20170603,"time_name":"2017-06-03","register_nums":1704,"real_register_nums":1704,"realname_nums":1354,"bind_nums":1318,"new_trans_nums":1093,"new_trans_values":1682.070000,"today_regtrans_nums":698,"trans_nums":4795,"trans_values":10374.284849,"report_time":"2017-06-03 23:59:53","kpi_values":7822.12},{"time_key":20170604,"time_name":"2017-06-04","register_nums":1435,"real_register_nums":1435,"realname_nums":1152,"bind_nums":1129,"new_trans_nums":975,"new_trans_values":1478.287900,"today_regtrans_nums":638,"trans_nums":3861,"trans_values":10028.554253,"report_time":"2017-06-04 23:59:16","kpi_values":7380.89},{"time_key":20170605,"time_name":"2017-06-05","register_nums":1854,"real_register_nums":1854,"realname_nums":1488,"bind_nums":1461,"new_trans_nums":1326,"new_trans_values":2224.221781,"today_regtrans_nums":806,"trans_nums":6237,"trans_values":18951.066023,"report_time":"2017-06-05 23:59:52","kpi_values":12412.01},{"time_key":20170606,"time_name":"2017-06-06","register_nums":2051,"real_register_nums":2051,"realname_nums":1678,"bind_nums":1651,"new_trans_nums":1429,"new_trans_values":2307.076088,"today_regtrans_nums":871,"trans_nums":8470,"trans_values":28488.836637,"report_time":"2017-06-06 23:59:10","kpi_values":22400.10},{"time_key":20170607,"time_name":"2017-06-07","register_nums":2312,"real_register_nums":2312,"realname_nums":1826,"bind_nums":1797,"new_trans_nums":1562,"new_trans_values":2740.858980,"today_regtrans_nums":1047,"trans_nums":14171,"trans_values":45761.298791,"report_time":"2017-06-07 23:57:19","kpi_values":37203.90},{"time_key":20170608,"time_name":"2017-06-08","register_nums":19439,"real_register_nums":19439,"realname_nums":17847,"bind_nums":17655,"new_trans_nums":16398,"new_trans_values":3351.337295,"today_regtrans_nums":15848,"trans_nums":24974,"trans_values":34152.746951,"report_time":"2017-06-08 23:59:46","kpi_values":28756.04},{"time_key":20170609,"time_name":"2017-06-09","register_nums":4225,"real_register_nums":4225,"realname_nums":3427,"bind_nums":3429,"new_trans_nums":3158,"new_trans_values":2598.826486,"today_regtrans_nums":2487,"trans_nums":11480,"trans_values":29728.541653,"report_time":"2017-06-09 23:59:44","kpi_values":25677.85},{"time_key":20170610,"time_name":"2017-06-10","register_nums":2592,"real_register_nums":2592,"realname_nums":2150,"bind_nums":2059,"new_trans_nums":1875,"new_trans_values":1827.410583,"today_regtrans_nums":1404,"trans_nums":7045,"trans_values":18045.224687,"report_time":"2017-06-10 23:59:39","kpi_values":15683.30},{"time_key":20170611,"time_name":"2017-06-11","register_nums":2314,"real_register_nums":2314,"realname_nums":1882,"bind_nums":1836,"new_trans_nums":1664,"new_trans_values":2085.489500,"today_regtrans_nums":1227,"trans_nums":7895,"trans_values":21630.034778,"report_time":"2017-06-11 23:59:57","kpi_values":18945.18},{"time_key":20170612,"time_name":"2017-06-12","register_nums":2947,"real_register_nums":2947,"realname_nums":2414,"bind_nums":2406,"new_trans_nums":2229,"new_trans_values":2848.153678,"today_regtrans_nums":1573,"trans_nums":6714,"trans_values":16099.506431,"report_time":"2017-06-12 23:59:56","kpi_values":10688.71},{"time_key":20170613,"time_name":"2017-06-13","register_nums":2715,"real_register_nums":2715,"realname_nums":2254,"bind_nums":2247,"new_trans_nums":2061,"new_trans_values":2833.095504,"today_regtrans_nums":1331,"trans_nums":6668,"trans_values":18225.828594,"report_time":"2017-06-13 23:59:53","kpi_values":12397.34},{"time_key":20170614,"time_name":"2017-06-14","register_nums":2856,"real_register_nums":2856,"realname_nums":2276,"bind_nums":2220,"new_trans_nums":2020,"new_trans_values":2384.830000,"today_regtrans_nums":1436,"trans_nums":9408,"trans_values":24194.213565,"report_time":"2017-06-14 23:59:55","kpi_values":16907.02},{"time_key":20170615,"time_name":"2017-06-15","register_nums":2984,"real_register_nums":2984,"realname_nums":2387,"bind_nums":2313,"new_trans_nums":2138,"new_trans_values":2981.592657,"today_regtrans_nums":1528,"trans_nums":8971,"trans_values":23650.887295,"report_time":"2017-06-15 23:49:48","kpi_values":15965.89}],"errorMessage":""}}}';
+            data = JSON.parse(o);
+            p1.footTable = p1.initTable(data, "final-table-foot", p1.formatBottomTableData);
+             
+            $("#final-table").height(g.h- $("#final .top-bar:first").height() - p1.footTable.scrollTable.height());
+           
+            p1.table = p1.initTable(data, "final-table", p1.formatData);
+            p1.table.setFootTable(p1.footTable);
+
+        });
+    };
+
+    p2.formatData = function(sdata){
+        var data = sdata.details.days.values;
+        var data1 = [];
+        
+        for (var i = data.length - 1; i >= 0; i--) {
+            
+            var today = g.day;
+            var received = new Date(data[i]["time_name"]).getDate();
+            // if (new Date(g.fdate).getMonth() === new Date(t1.date).getMonth() && received > today)
+            //     continue;
+            var d = {};
+            for (var column in data[i]) {
+                d[column] = data[i][column];
+            }
+            data1.push(d);
+        }
+        
+        return data1;
+    };
+
+    p1.formatBottomTableData = function(sdata){
+        var month = sdata.details.month.values[0];
+        var ds = [];
+        var d = {};
+
+        for (var column in month) {
+            d[column] = month[column];
+        }
+        d["time_name"] = "月核心指标";
+        ds.push(d);
+        return ds;
+    };
+
+    p1.initTable =function(data, id, format){
+
+        var fdata = format(data);
+        var table = Htable.create(id);
+        
+        var fixColumns = [[
+                {field: 'time_name', title: '日期', width: 100},
+            ]];
+     
+        var columns = [[
+                {field: 'kpi_values', title: '<b style="color:red">KPI完成额</b>', width: 80, sortable: true, formatter: g.parseFloat},
+                {field: 'trans_values', title: '交易金额', width: 80, sortable: true, formatter: g.parseFloat},
+                {field: 'new_trans_nums', title: '交易人数', width: 80, sortable: true},
+                {field: 'register_nums', title: '注册人数', width: 80, sortable: true},
+                {field: 'real_register_nums', title: '注册人数', width: 80, sortable: true},
+                {field: 'trans_nums', title: '交易人数', width: 80, sortable: true},
+                {field: 'today_regtrans_nums', title: '当日注册<br/>并交易人数', width: 80, sortable: true},
+                {field: 'realname_nums', title: '实名人数', width: 80, sortable: true},
+                {field: 'bind_nums', title: '绑定人数', width: 80, sortable: true},
+                {field: 'new_trans_values', title: '新增交易人数的交易金额', width: 80, sortable: true, formatter: g.parseFloat},
+            ]];
+
+        
+        table.setMaxHeight($("#" + id).height());
+        table.setFixcolumns(fixColumns);
+        table.setColumns(columns);
+        table.loadData(fdata);
+
+        return table;
+    };
+
+        
+    
+
+</script>

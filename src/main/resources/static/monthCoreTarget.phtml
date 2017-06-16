@@ -1,0 +1,137 @@
+<header class="bar bar-nav ">
+    <a class="button button-link button-nav pull-left back" href="/">
+        <span class="icon icon-left" style=""></span>
+        返回
+    </a>
+    <h1 class='title'>月度核心指标</h1>
+</header>
+
+<div class="content">
+    <div id="monthCoreTarget-top-bar" style="font-size:13px;width:98%;margin:0 auto;">
+        <?php $this->partial("reports/toolbar"); ?>
+    </div>
+    <div style="width:100%;position: relative">
+    <div id="monthCoreTarget-table" style="width:98%;height:200px;margin: 0 auto;position:relative;"></div>
+    <div id="monthCoreTarget-table-foot" style="width:98%;height:200px;margin: 0 auto;position:relative;"></div>
+    </div>
+</div>
+
+<script>
+
+    var t1 = {};
+    p.monthCoreTarget = t1;
+
+    t1.init = false;
+
+    t1.initTable = function (data, id, format) {
+        
+        var fdata = format(data);
+        var table = Htable.create(id);
+        
+        var fixColumns = [[
+                {field: 'time_name', title: '日期', width: 100},
+            ]];
+        //交易金额|新增交易人数|注册人数|交易人数|实名人数|绑定人数|新增交易人的交易金额
+        var columns = [[
+                {field: 'kpi_values', title: '<b style="color:red">KPI完成额</b>', width: 80, sortable: true, formatter: g.parseFloat},
+                {field: 'trans_values', title: '交易金额', width: 80, sortable: true, formatter: g.parseFloat},
+                {field: 'new_trans_nums', title: '新增交易人数', width: 80, sortable: true},
+                {field: 'register_nums', title: '注册人数', width: 80, sortable: true},
+                {field: 'real_register_nums', title: '真实注册人数', width: 80, sortable: true},
+                {field: 'trans_nums', title: '交易人数', width: 80, sortable: true},
+                {field: 'today_regtrans_nums', title: '当日注册<br/>并交易人数', width: 80, sortable: true},
+                {field: 'realname_nums', title: '实名人数', width: 80, sortable: true},
+                {field: 'bind_nums', title: '绑定人数', width: 80, sortable: true},
+                {field: 'new_trans_values', title: '新增交易人数的交易金额', width: 80, sortable: true, formatter: g.parseFloat},
+            ]];
+
+
+        table.setMaxHeight($("#" + id).height());
+        table.setFixcolumns(fixColumns);
+        table.setColumns(columns);
+        table.loadData(fdata);
+
+        return table;
+    };
+
+    t1.formatData = function (_data) {
+
+        var data = _data.details.days.values;
+        var data1 = [];
+        var update_time = null;
+        for (var i = data.length - 1; i >= 0; i--) {
+            if(!update_time){
+                update_time = data[i]["report_time"];
+            }
+            var today = g.day;
+            var received = new Date(data[i]["time_name"]).getDate();
+            if (new Date(g.fdate).getMonth() === new Date(t1.date).getMonth() && received > today)
+                continue;
+            var d = {};
+            for (var column in data[i]) {
+                d[column] = data[i][column];
+            }
+            d["_id"] = "monthCoreTarget" + i;
+            data1.push(d);
+        }
+        $("#monthCoreTarget .update-time").html("更新时间: " + update_time);
+        return data1;
+    };
+
+    t1.formatBottomTableData = function (_data) {
+
+        var month = _data.details.month.values[0];
+        var ds = [];
+        var d = {};
+
+        for (var column in month) {
+            d[column] = month[column];
+        }
+        d["time_name"] = "月核心指标";
+        ds.push(d);
+        return ds;
+    };
+
+   
+
+    t1.initPage = function () {
+
+        g.queryData(t1.date, t1.geturl, function (data) {
+            t1.footTable = t1.initTable(data, "monthCoreTarget-table-foot", t1.formatBottomTableData).hideThead();
+            $("#monthCoreTarget-table").height(g.h - $("#monthCoreTarget header:first").height() - $("#monthCoreTarget .top-bar:first").height() - g.pageMarBot - t1.footTable.scrollTable.height());
+            t1.table = t1.initTable(data, "monthCoreTarget-table", t1.formatData);
+            t1.table.setFootTable(t1.footTable);
+            $.hideIndicator();
+
+            if (g.terminal === "phone") {
+                $("#monthCoreTarget-table-foot").bind("touchstart", function () {
+                    event.preventDefault();
+                });
+                t1.table.floatScrollTableTitlePanel.bind("touchstart", function () {
+                    event.preventDefault();
+                });
+            } else if (g.terminal === "pc") {
+                //$("#monthCoreTarget-table-foot .float-title").hide();
+            }
+
+
+        });
+
+    };
+
+
+
+    $(document).on("pageAnimationEnd", "#monthCoreTarget", function (e, pageId, $page) {
+
+        var dt = $("#monthCoreTarget .span-date:first");
+        dt.text(new Date(dt.text()).format('yyyy-MM'));
+        //$("#monthCoreTarget .toolbar-line-2-personal").html("该报表不含二级市场和基金");
+        if (t1.init) {
+            $.hideIndicator();
+            return;
+        }
+
+        t1.init = true;
+        t1.initPage();
+    });
+</script>
