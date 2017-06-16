@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title></title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>消费信贷报表</title>
 
     <!--<meta name="robots" content="noarchive">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
@@ -13,8 +13,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">-->
 
     <link rel="stylesheet" type="text/css" href="./icon-fonts/iconfont.css">
-    <link rel="stylesheet" href="./js/light7/light7.min.css">
-    <link rel="stylesheet" href="./css/htable.css">
+    <link rel="stylesheet" type="text/css" href="./js/light7/light7.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/htable.css">
 
 
     <script type='text/javascript' src='./js/jquery.min.js' charset='utf-8'></script>
@@ -43,7 +43,7 @@
                 $("body").width(g.maxWidth);
                 $("body").css("margin", "0 auto");
             }
-            g.loadPage("final", true);
+            g.loadPage("finialReview", true);
         });
     </script>
 </head>
@@ -51,7 +51,8 @@
 <body>
     <div class="page-group" style="margin: 0 auto;">
         <!-- TODO -->
-        <div class="page" id='final'></div>
+        <div class="page" id='finialReview'></div>
+        <div class="page" id='mobileReview'></div>
     </div>
 </body>
 

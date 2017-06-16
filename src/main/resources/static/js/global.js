@@ -10,7 +10,7 @@ g.h = window.innerHeight;
 
 var p = {}; //pages
 var p1 = {};
-p.final = p1;
+p.finialReview = p1;
 
 //命名空间的问题
 
