@@ -1,0 +1,47 @@
+#app
+server:
+  port: 9999
+  servlet-path: /
+#  server.session.persistent=false # Persist session data between restarts.
+#  server.session.store-dir= # Directory used to store session data.
+#  server.session.timeout= # Session timeout in seconds.
+
+### spring
+spring:
+#  resources:
+#    static-locations: static/**
+  output:
+    ansi:
+      enabled: always
+  devtools:
+    restart:
+      enabled: true
+
+  #mysql+连接池
+  datasource:
+#    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://116.62.134.242:3306/springboot?characterEncoding=utf8&useSSL=false
+    username: springboot
+    password: springboot
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+### mybatis
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  typeAliasesPackage: com.baomidou.springboot.entity
+  global-config:
+    id-type: 0
+    field-strategy: 2
+    auto-set-db-type: true
+    db-column-underline: true
+    refresh-mapper: true
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+
+#logging
+logging:
+  level:
+   com.evergrande.springboot: debug
+   root : info

@@ -1,0 +1,304 @@
+{
+  "status": "200",
+  "message": "",
+  "id": 164,
+  "configName": "终审",
+  "configType": "1",
+  "isInterface": 1,
+  "isTask": 1,
+  "remark": null,
+  "details": {
+    "list": {
+      "id": 1129,
+      "values": [
+        {
+          "hours_desc": "23-24时",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "22-23时",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "21-22时",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "20-21时",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "19-20时",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "18-19时",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "17-18时",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "16-17时",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "15-16时",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "14-15时",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "13-14时",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "12-13时",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "11-12时",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "10-11时",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "9-10时",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "8-9时",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "7-8时",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "6-7时",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "5-6时",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "4-5时",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "3-4时",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "2-3时",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "1-2时",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "0-1时",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "当天累计",
+          "finial_review_add_cnt": 0,
+          "finial_review_add_amt": 0.000000,
+          "finial_review_finish_cnt": 0,
+          "finial_review_finish_amt": 0.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        },
+        {
+          "hours_desc": "历史累计",
+          "finial_review_add_cnt": 2,
+          "finial_review_add_amt": 100000.000000,
+          "finial_review_finish_cnt": 2,
+          "finial_review_finish_amt": 100000.000000,
+          "finial_review_refuse_cnt": 0,
+          "finial_review_refuse_amt": 0.000000,
+          "finial_review_wait_cnt": 0,
+          "report_time": 1497433030000
+        }
+      ],
+      "errorMessage": ""
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<excels>
+	<!-- excel标签参看:ExcelDefinition,Field标签参看:FieldValue -->
+
+	<!--<excel id="user" class="com.baomidou.springwind.entity.User" sheetname="用户列表"
+		   defaultColumnWidth="5000" defaultAlign="center" enableStyle="true">
+		<field name="id" title="主键"/>
+		<field name="loginName" title="用户名"/>
+		<field name="password" title="密码"/>
+		<field name="email" title="邮箱"/>
+		<field name="type" title="类别" format="3:超级管理员,1:管理员,2:普通用户" />
+		<field name="status" title="状态" format="1:正常,0:禁用" />
+		<field name="createTime" title="创建时间" pattern="yyyy/MM/dd"/>
+		<field name="lastTime" title="最后登录时间" pattern="yyyy/MM/dd"/>
+	</excel>
+
+	<excel id="finalUser" class="com.baomidou.springwind.entity.FinalUser" sheetname="正式名单"
+		   defaultColumnWidth="5000" defaultAlign="center" enableStyle="true">
+		<field name="id" title="主键"/>
+		<field name="mobileNo" title="客户手机号"/>
+		<field name="memberNo" title="客户会员号"/>
+		<field name="userName" title="客户姓名"/>
+		<field name="userType" title="客户类别" format="1:上报,2:分配,3:未分配vip"/>
+		<field name="reportDate" title="上报日期" pattern="yyyy/MM/dd"/>
+		<field name="registerTime" title="注册时间" pattern="yyyy/MM/dd HH:mm:ss"/>
+		<field name="isVipuser" title="是否vip" format="1:是,0:否"/>
+		<field name="vipDate" title="成为vip日期" pattern="yyyy/MM/dd"/>
+		<field name="advisorId" title="投资顾问ID号"/>
+		<field name="advisorName" title="投资顾问姓名"/>
+		<field name="userMark" title="客户标识"/>
+		<field name="isPerformancePool" title="是否业绩池" format="1:是,0:否"/>
+		<field name="createTime" title="创建时间" pattern="yyyy/MM/dd HH:mm:ss"/>
+		<field name="updateTime" title="更新时间" pattern="yyyy/MM/dd HH:mm:ss"/>
+	</excel>-->
+
+</excels>

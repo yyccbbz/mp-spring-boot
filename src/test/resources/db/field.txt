@@ -1,0 +1,89 @@
+
+httpclient:
+http://ds.idc.xiwanglife.com/dataservice/getconfig.do?id=164
+
+终审
+http://ds.idc.xiwanglife.com/dataservice/getconfig.do?id=164&date=2017-06-14
+
+15:12:31
+赵鹏 2017/6/15 15:12:31
+
+http://ds.idc.xiwanglife.com/dataservice/getconfig.do?id=165&date=?   电审
+15:15:31
+赵鹏 2017/6/15 15:15:31
+http://ds.idc.xiwanglife.com/dataservice/getconfig.do?id=166&date=?   初审
+
+赵鹏 2017/6/15 15:17:05
+http://ds.idc.xiwanglife.com/dataservice/getconfig.do?id=167&date=?  复审
+
+#app
+server:
+  port: 8888
+
+#spring
+spring:
+#  resources:
+#    static-locations: static/**
+
+#  devtools:
+#    restart:
+#      exclude: static/**,templates/**
+#      enabled: false
+  output:
+    ansi:
+      enabled: always
+
+  #mysql+连接池
+  datasource:
+#    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://116.62.134.242:3306/springboot?characterEncoding=utf8&useSSL=false
+    username: springboot
+    password: springboot
+    driver-class-name: com.mysql.jdbc.Driver
+
+  #thymeleaf
+#  thymeleaf:
+#    cache: false
+#    prefix: classpath:/templates/
+#    suffix: .html
+#    mode: HTML5
+#    encoding: UTF-8
+#    content-type: text/html
+#    注释的部分是Thymeleaf默认的配置，如有其它需求可以自行更改
+
+  # H2 DATABASE CONFIG
+#  datasource:
+#    schema: classpath:/db/schema-h2.sql
+#    data: classpath:/db/data-h2.sql
+#    url: jdbc:h2:mem:testdb
+#    username: sa
+#    password: sa
+#    platform: h2
+#    initialize: true
+#    continue-on-error: true
+#  h2:
+#    console:
+#      enabled: true
+#      path: /console
+
+#mybatis
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  typeAliasesPackage: com.baomidou.springboot.entity
+  global-config:
+    id-type: 0
+    field-strategy: 2
+    auto-set-db-type: true
+    db-column-underline: true
+    refresh-mapper: true
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+
+#logging
+logging:
+  level:
+    com.baomidou.springboot: debug
+    root : warn
+  path: /home/springboot
+
