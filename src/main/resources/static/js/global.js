@@ -157,9 +157,11 @@ g.loadPage = function (pageId, noAnimation, param, force) {
 
     if (force || !html || html.length === 0) {
         $.ajax({
+            // url: "/pages/" + pageId + ".html",
             url: "/pages/" + pageId + ".html",
+            // url: pageId,
             async: true,
-            type: 'POST',
+            type: 'GET',
             success: function (text, textStatus) {
                 $("#" + pageId).children().remove();
                 $("#" + pageId).html(text);
@@ -177,7 +179,7 @@ g.loadToolbar = function (pageId) {
     $.ajax({
         url: "/pages/toolbar.html",
         async: false,
-        type: 'POST',
+        type: 'GET',
         success: function (text, textStatus) {
             $("#" + pageId + " .top-bar").html(text);
             g.initPageDate(pageId);
