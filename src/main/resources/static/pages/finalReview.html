@@ -1,0 +1,93 @@
+<!--<header class="bar bar-nav ">
+    <a class="button button-link button-nav pull-left back" href="/">
+        <span class="icon icon-left" style=""></span>
+        返回
+    </a>
+    <h1 class='title'></h1>
+</header>-->
+
+<div class="content">
+    <div class="top-bar" style="height:30px;font-size:13px;width:98%;margin:0 auto">
+
+    </div>
+    <div style="width:100%;position: relative">
+        <div id="finalReview-table" style="width:98%;height:200px;margin: 0 auto;position:relative;"></div>
+        <div id="finalReview-table-foot" style="width:98%;height:200px;margin: 0 auto;position:relative;"></div>
+    </div>
+</div>
+
+
+<script>
+
+    p2.initPage = function () {
+        /*url 实际字段*/
+        g.queryData(p2.date, "review/finalReview", function (data) {
+//            var o = '[{"hours_desc":"23-24时","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"22-23时","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"21-22时","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"20-21时","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"19-20时","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"18-19时","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"17-18时","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"16-17时","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"15-16时","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"14-15时","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"13-14时","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"12-13时","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"11-12时","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"10-11时","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"9-10时","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"8-9时","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"7-8时","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"6-7时","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"5-6时","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"4-5时","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"3-4时","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"2-3时","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"1-2时","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"0-1时","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"当天累计","final_review_add_cnt":0,"final_review_add_amt":0,"final_review_finish_cnt":0,"final_review_finish_amt":0,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000},{"hours_desc":"历史累计","final_review_add_cnt":2,"final_review_add_amt":100000,"final_review_finish_cnt":2,"final_review_finish_amt":100000,"final_review_refuse_cnt":0,"final_review_refuse_amt":0,"final_review_wait_cnt":0,"report_time":1497433030000}]';
+//            data = JSON.parse(o);
+
+            console.log(data);
+
+            p2.footTable = p2.initTable(data, "finalReview-table-foot", p2.formatFootTableData);
+
+            $("#finalReview-table").height(g.h - $("#finalReview .top-bar:first").height() - p2.footTable.scrollTable.height());
+            p2.table = p2.initTable(data, "finalReview-table", p2.formatData);
+            p2.table.setFootTable(p2.footTable);
+        });
+    };
+
+    p2.formatData = function (sdata) {
+        var data = [];
+
+        for (var i = 0; i < sdata.length-2; i++) {
+            var d = {};
+            for (var column in sdata[i]) {
+                d[column] = sdata[i][column];
+            }
+            data.push(d);
+        }
+
+        return data;
+    };
+
+    p2.formatFootTableData = function (sdata) {
+        var data = [];
+
+        for (var i = sdata.length-2; i < sdata.length; i++) {
+            var d = {};
+            for (var column in sdata[i]) {
+                d[column] = sdata[i][column];
+            }
+            data.push(d);
+        }
+
+        return data;
+    };
+
+    p2.initTable = function (data, id, format) {
+
+        var fdata = format(data);
+        var table = Htable.create(id);
+
+        var fixColumns = [[
+            {field: 'hours_desc', title: '时间段', width: 80},
+        ]];
+
+        var columns = [[
+            {field: 'final_review_add_cnt', title: '新增待审笔数', width: 100, sortable: true},
+            {field: 'final_review_add_amt', title: '新增待审金额', width: 100, sortable: true},
+            {field: 'final_review_finish_cnt', title: '完成笔数', width: 80, sortable: true},
+            {field: 'final_review_finish_amt', title: '完成金额', width: 80, sortable: true},
+            {field: 'final_review_refuse_cnt', title: '拒绝笔数', width: 80, sortable: true},
+            {field: 'final_review_refuse_amt', title: '拒绝金额', width: 80, sortable: true},
+        ]];
+
+        table.setMaxHeight($("#" + id).height());
+        table.setFixcolumns(fixColumns);
+        table.setColumns(columns);
+        table.loadData(fdata);
+
+        return table;
+    };
+
+
+</script>

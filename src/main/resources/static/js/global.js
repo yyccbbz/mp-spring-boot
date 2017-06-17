@@ -10,7 +10,10 @@ g.h = window.innerHeight;
 
 var p = {}; //pages
 var p1 = {};
-p.finialReview = p1;
+p.final = p1;
+
+var p2 = {};
+p.finalReview = p2;
 
 //命名空间的问题
 
@@ -128,7 +131,7 @@ $(document).on("pageAnimationStart", function (e, pageId, $page) {
 });
 
 g.loadPage = function (pageId, noAnimation, param, force) {
-   
+
     if (!noAnimation)
         noAnimation = false;
 
@@ -173,7 +176,7 @@ g.loadPage = function (pageId, noAnimation, param, force) {
         g.loadToolbar(pageId);
         load();
     }
-}
+};
 
 g.loadToolbar = function (pageId) {
     $.ajax({
@@ -189,30 +192,30 @@ g.loadToolbar = function (pageId) {
 
 g.queryData = function (date, url, callback) {
 
-    // $.ajax({
-    //     url: url,
-    //     async: true,
-    //     type: 'POST',
-    //     timeout: g.timeout,
-    //     data: { day: date },
-    //     xhrFields: {
-    //         withCredentials: false
-    //     },
-    //     success: function (text, textStatus) {
-    //         try {
-    //             var o = JSON.parse(text);
-    //             callback(o);
-    //         } catch (e) {
-    //             console.error(e);
-    //         }finally{
-    //             $.hideIndicator();
-    //         }
-    //     },
-    //     error: function (XMLHttpRequest, textStatus, errorThrown) {
-    //         $.hideIndicator();
-    //         $.toast("获取数据超时");
-    //     }
-    // });
+    $.ajax({
+        url: url,
+        async: true,
+        type: 'POST',
+        timeout: g.timeout,
+        data: {day: date},
+        xhrFields: {
+            withCredentials: false
+        },
+        success: function (text, textStatus) {
+            try {
+                var o = JSON.parse(text);
+                callback(o);
+            } catch (e) {
+                console.error(e);
+            } finally {
+                $.hideIndicator();
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            $.hideIndicator();
+            $.toast("获取数据超时");
+        }
+    });
     callback("");
 };
 
