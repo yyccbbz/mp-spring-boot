@@ -6,10 +6,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 
-/**
- * mybatis-plus Spring Boot 测试 Demo<br>
- * 文档：http://mp.baomidou.com<br>
- */
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer {
 
