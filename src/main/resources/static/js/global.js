@@ -14,6 +14,12 @@ p.final = p1;
 
 var p2 = {};
 p.finalReview = p2;
+var p3 = {};
+p.mobileReview = p3;
+var p4 = {};
+p.firstReview = p4;
+var p5 = {};
+p.secondReview = p5;
 
 //命名空间的问题
 

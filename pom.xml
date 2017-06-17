@@ -195,14 +195,6 @@
 				<configuration>
 					<fork>true</fork>
 				</configuration>
-				<!--<dependencies>
-					&lt;!&ndash; spring热部署&ndash;&gt;
-					<dependency>
-						<groupId>org.springframework</groupId>
-						<artifactId>springloaded</artifactId>
-						<version>1.2.7.RELEASE</version>
-					</dependency>
-				</dependencies>-->
 			</plugin>
 		</plugins>
 	</build>

@@ -1,0 +1,8 @@
+时间段,hours_desc
+新增待审笔数,first_review_add_cnt
+新增待审金额,first_review_add_amt
+完成笔数,first_review_finish_cnt
+完成金额,first_review_finish_amt
+拒绝笔数,first_review_refuse_cnt
+拒绝金额,first_review_refuse_amt
+待审笔数,first_review_wait_cnt

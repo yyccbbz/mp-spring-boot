@@ -1,0 +1,87 @@
+<!--<header class="bar bar-nav ">
+    <a class="button button-link button-nav pull-left back" href="/">
+        <span class="icon icon-left" style=""></span>
+        返回
+    </a>
+    <h1 class='title'></h1>
+</header>-->
+
+<div class="content">
+    <div class="top-bar" style="height:30px;font-size:13px;width:98%;margin:0 auto">
+
+    </div>
+    <div style="width:100%;position: relative">
+        <div id="firstReview-table" style="width:98%;height:200px;margin: 0 auto;position:relative;"></div>
+        <div id="firstReview-table-foot" style="width:98%;height:200px;margin: 0 auto;position:relative;"></div>
+    </div>
+</div>
+
+
+<script>
+
+    p4.initPage = function () {
+        g.queryData(p4.date, "review/firstReview", function (data) {
+            p4.footTable = p4.initTable(data, "firstReview-table-foot", p4.formatFootTableData);
+            $("#firstReview-table").height(g.h - $("#firstReview .top-bar:first").height() - p4.footTable.scrollTable.height());
+            p4.table = p4.initTable(data, "firstReview-table", p4.formatData);
+            p4.table.setFootTable(p4.footTable);
+        });
+    };
+
+    p4.formatData = function (sdata) {
+        var data = [];
+
+        for (var i = 0; i < sdata.length-2; i++) {
+            var d = {};
+            for (var column in sdata[i]) {
+                d[column] = sdata[i][column];
+            }
+            data.push(d);
+        }
+
+        return data;
+    };
+
+    p4.formatFootTableData = function (sdata) {
+        var data = [];
+
+        for (var i = sdata.length-2; i < sdata.length; i++) {
+            var d = {};
+            for (var column in sdata[i]) {
+                d[column] = sdata[i][column];
+            }
+            data.push(d);
+        }
+
+        return data;
+    };
+
+    p4.initTable = function (data, id, format) {
+
+        var fdata = format(data);
+        var table = Htable.create(id);
+
+        var fixColumns = [[
+            {field: 'hours_desc', title: '时间段', width: 80},
+        ]];
+
+        var columns = [[
+            {field: 'first_review_add_cnt', title: '新增待审笔数', width: 100, sortable: true},
+            {field: 'first_review_add_amt', title: '新增待审金额', width: 100, sortable: true},
+            {field: 'first_review_finish_cnt', title: '完成笔数', width: 80, sortable: true},
+            {field: 'first_review_finish_amt', title: '完成金额', width: 80, sortable: true},
+            {field: 'first_review_refuse_cnt', title: '拒绝笔数', width: 80, sortable: true},
+            {field: 'first_review_refuse_amt', title: '拒绝金额', width: 80, sortable: true},
+            {field: 'first_review_wait_cnt', title: '待审笔数', width: 80, sortable: true},
+        ]];
+
+        table.setMaxHeight($("#" + id).height());
+        table.setFixcolumns(fixColumns);
+        table.setColumns(columns);
+        table.loadData(fdata);
+
+        return table;
+    };
+
+
+</script>
