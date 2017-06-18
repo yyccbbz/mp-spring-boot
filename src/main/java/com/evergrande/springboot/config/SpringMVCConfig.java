@@ -1,5 +1,8 @@
 package com.evergrande.springboot.config;
 
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.alibaba.fastjson.support.config.FastJsonConfig;
+import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.baomidou.kisso.SSOAuthorization;
 import com.baomidou.kisso.web.WebKissoConfigurer;
 import com.baomidou.kisso.web.interceptor.SSOPermissionInterceptor;
@@ -8,10 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import java.nio.charset.Charset;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -61,6 +69,7 @@ public class SpringMVCConfig extends WebMvcConfigurerAdapter {
 //    @Override
 //    public void addResourceHandlers(ResourceHandlerRegistry registry) {
 //        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+//        super.addResourceHandlers(registry);
 //    }
 
     /**
@@ -77,7 +86,7 @@ public class SpringMVCConfig extends WebMvcConfigurerAdapter {
     }
 
     // 自定义消息转化器
-    /*@Override
+    @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 
         super.configureMessageConverters(converters);
@@ -94,5 +103,5 @@ public class SpringMVCConfig extends WebMvcConfigurerAdapter {
 
         converters.add(httpMessageConverter);
         converters.add(fastConverter);
-    }*/
+    }
 }

@@ -1,0 +1,112 @@
+/*
+  
+ @name: 基础样式
+ @date: 2017-03-02
+ 
+*/
+
+@charset "utf-8";
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+	border: 0;
+}
+html,body{
+	width: 100%;	
+	height: 100%;	
+	background:white;
+	overflow: hidden;
+}
+body{
+	font: 12px/1.125 "微软雅黑",Tahoma,Helvetica,"宋体",san-serif;
+	background: -ms-linear-gradient(top, #dcf1ef,  #fff);        /* IE 10 */
+	background:-moz-linear-gradient(top,#dcf1ef,#fff);/*火狐*/ 
+	background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#fff), to(#dcf1ef));/*谷歌*/ 
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#dcf1ef));      /* Safari 4-5, Chrome 1-9*/
+	background: -webkit-linear-gradient(top, #dcf1ef, #fff);   /*Safari5.1 Chrome 10+*/
+	background: -o-linear-gradient(top, #dcf1ef, #fff);  /*Opera 11.10+*/
+}
+header,article,section,footer,hgroup,aside{display: block;}
+a{
+	text-decoration:none;
+	color:#333;
+}
+ul,ol{
+	list-style:none;
+}
+i,em{
+	font-style: initial;
+}
+.in_left{
+	float:left;
+}
+.in_right{
+	float:right;
+}
+/*remove float*/
+.clearfix:after{
+	content:'';
+	height:0;
+	font-size:0;
+	visibility:hidden;
+	display:block;
+	clear:both;
+}
+/* exceed hidden */
+.ellipsis{
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+}
+/* 手型 */
+.pointer:hover{
+	cursor: pointer;
+	color: #1BCAC8;
+	text-decoration: underline;
+}
+/* hover style */
+.mouseHover:hover{
+	color: #0999CC;
+	text-decoration: underline;
+	cursor: pointer;
+}
+.Auto{
+	position: absolute;
+	display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+table{
+	width:100%;
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+	overflow: hidden;
+}
+th,td{
+	font-size: 0.14rem;
+	color: #333;
+	height: 0.5rem; 
+	line-height: 0.5rem;
+	text-align: center;
+	border: 0.01rem solid #ccc; 
+	border-top: none;
+	position: relative;	
+	overflow: hidden;			
+}
+table th{	
+	font-size: 0.15rem;
+	color: white;
+	font-weight: 500;
+	background-color:#77d5d4;
+	border-bottom: none;
+	border: #77d5d4; 
+}
+col{
+	overflow: hidden;
+}

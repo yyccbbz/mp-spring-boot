@@ -1,0 +1,68 @@
+@import url("base.css");
+.login_box{
+	width: 400px;
+	height: 430px;
+	padding: 20px;
+	border-radius: 10px;	
+	background:rgba(255,255,255,0.4);
+    box-shadow: 0 20px 90px 0  #666;
+    overflow: hidden;
+}
+.form,.input,.button,#error_box,.logo{
+	width:100%;
+ 	margin:0 auto;
+}       
+.form{
+	border-radius: 2px;
+}
+.login_box .input{
+	padding: 20px 16px;
+	font-size: 20px;
+	outline: none;       	
+	border-bottom:1px solid #ccc;
+}      
+.login_box .input:nth-of-type(1){
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+} 
+.login_box .input:nth-of-type(2){
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+.button{
+	height: 60px;
+	margin-top: 20px;
+	font-size: 20px;
+	color: #fff;
+	background: #1c5050;
+	border-radius: 2px;
+}
+.login_box .logo{
+	margin: 40px auto;
+}
+.login_box .logo img{
+	display: block;  
+	margin: 0 auto;     	
+}
+#error_box{
+	height: 30px;
+	line-height: 30px;
+}
+
+/*  自适应 */
+@media all and (max-width: 960px) {
+	.login_box{
+		width: 80%;
+		min-width: 300px;
+		height: 300px;
+	}
+	.login_box .logo{
+		margin: 10px auto 0;
+	}
+	.login_box .input{
+		padding: 13px 16px;
+	}      
+	.login_box .button{
+		height: 50px;
+	}
+}

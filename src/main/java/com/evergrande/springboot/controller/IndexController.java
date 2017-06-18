@@ -27,17 +27,16 @@ public class IndexController extends BaseController {
 	 * </p>
 	 */
 //	@Permission("1000")
-	@RequestMapping("/home")
-	public String index(Model model) {
-		SSOToken st = SSOHelper.attrToken(request);
-		if (st != null) {
-			System.err.println(" Long 类型 ID: " + st.getId());
-			model.addAttribute("userId", st.getUid());
-			System.err.println(" 启动注入测试模式：" + SSOConfig.getInstance().getRunMode());
-			return "home";
-		}
-		return "home";
-	}
+//	@RequestMapping("/index")
+//	public String index(Model model) {
+//		SSOToken st = SSOHelper.attrToken(request);
+//		if (st != null) {
+//			System.err.println(" Long 类型 ID: " + st.getId());
+//			model.addAttribute("userId", st.getUid());
+//			System.err.println(" 启动注入测试模式：" + SSOConfig.getInstance().getRunMode());
+//		}
+//		return "index";
+//	}
 	
 	/**
 	 * 验证码 （注解跳过权限验证）

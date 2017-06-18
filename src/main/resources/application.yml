@@ -9,12 +9,14 @@ server:
 ### spring
 spring:
 #  resources:
-#    static-locations: static/**
+#    static-locations: static/public/**,
   output:
     ansi:
       enabled: always
   devtools:
     restart:
+      enabled: true
+    livereload:
       enabled: true
 
   #mysql+连接池

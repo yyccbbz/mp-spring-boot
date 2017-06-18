@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>消费信贷报表系统登录</title>
+    <!-- 优先使用最新版本IE & Chrome -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <!-- 360使用Chrome Frame -->
+    <meta name="renderer" content="webkit"/>
+    <!-- 360 使用 Chrome内核 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <!-- `width=device-width` 会导致 iPhone 5 添加到主屏后以 WebApp 全屏模式打开页面时出现黑边 http://bigc.at/ios-webapp-viewport-meta.orz -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no"/>
+    <!-- 禁止数字识自动别为电话号码 -->
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- iPhone 和 iTouch，默认 57x57 像素，必须有 -->
+    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57x57-precomposed.png"/>
+    <!-- iPad，72x72 像素，可以没有 -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72x72-precomposed.png"/>
+    <!-- Retina iPhone 和 Retina iTouch，114x114 像素，可以没有 -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114-precomposed.png"/>
+    <!-- Retina iPad，144x144 像素，可以没有 -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144-precomposed.png"/>
+    <!-- IOS 图标大小在iPhone 6 plus上是180×180，iPhone 6 是120×120。 适配iPhone 6 plus，则需要在中加上这段 -->
+    <link rel="shortcut icon" type="image/x-icon" href="imgs/logo.ico"/>
+    <link rel="stylesheet" type="text/css" href="css/login.css"/>
+    <style type="text/css">
+        body {
+            background: #000 url(imgs/bg9.jpg) no-repeat;
+            background-size: cover;
+        }
+
+        #coveBg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: hsla(176, 87%, 40%, .3);
+        }
+    </style>
+</head>
+<body>
+<div id="coveBg"></div>
+<!--<img src="image/loginBG.jpg"height="100%" class="img"/>-->
+<div class="login_box Auto">
+    <div class="logo"><img src="imgs/login.jpg" width="20%" style="border-radius: 50%" ;></div>
+    <div id="error_box" style="color: red;"></div>
+    <form class="form">
+        <input type="text" name="uname" id="uname" value="" placeholder="用户名" class="input"/>
+        <input type="password" name="upass" id="upass" value="" placeholder="密码" class="input" style="border: none;"/>
+    </form>
+    <input type="button" value="登录" onclick="fnLogin()" class="button pointer"/>
+</div>
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/jquery.cookie.js" type="text/javascript"></script>
+<script src="js/resolution.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).keyup(function (event) {
+        if (event.keyCode == 13) {
+            fnLogin();
+        }
+    });
+
+//    $('input').blur(function () {
+//        fnLogin();
+//    });
+
+    function fnLogin() {
+        var oUname = document.getElementById("uname");
+        var oUpass = document.getElementById("upass");
+        var oError = document.getElementById("error_box");
+        var isNotError = true;
+        if (oUname.value.length > 20 || oUname.value.length < 2) {
+            //oUname.select();
+            oError.innerHTML = "*用户名长度必须在2~20位之间";
+            isNotError = false;
+            return;
+
+        } else if (oUname.value.charCodeAt(0) >= 48 && oUname.value.charCodeAt(0) <= 57) {
+            //oUname.select();
+            oError.innerHTML = "*用户名开头不能为数字";
+            isNotError = false;
+            return;
+        } else {
+            for (var i = 0; i < oUname.value.length; i++) {
+                if ((oUname.value.charCodeAt(i) > 122 || oUname.value.charCodeAt(i) < 97) && (oUname.value.charCodeAt(i) > 57 || oUname.value.charCodeAt(i) < 48)) {
+                    //oUname.select();
+                    oError.innerHTML = "*用户名只能包含小写字母和数字";
+                    isNotError = false;
+                    return;
+                }
+            }
+        }
+        if (oUpass.value.length > 20 || oUpass.value.length < 2) {
+            //oUpass.select();
+            oError.innerHTML = "*密码长度必须在2~20位之间";
+            isNotError = false;
+            return;
+        }
+
+        $.ajax({
+            url: "/loginpost",
+            async: true,
+            type: 'POST',
+            data: {loginname: oUname.value, password: oUpass.value},
+            success: function (data, textStatus) {
+//                ajaxResult.setCode(1).setMsg("/index.html").setObj(st);
+//                ajaxResult.setCode(0).setMsg("用户名或密码错误").setObj("/login");
+//                var o = jQuery.parseJSON(data);
+                if (data.code === 1) {
+                    $.cookie("userName", $('#uname').val(), {
+                        expires: 365
+                    });
+//          	var url = "http://us.xiwanglife.com/userservice/login.do?userName="+oUname.value+"&password="+oUpass.value;
+//          	$("body").append("<iframe id='loginI' src='"+url+"'>");
+                    /*
+                     新加功能（待完成）
+                     *  1. 当前账号是否具备权限
+                     *  2. 定时发送请求
+                     *
+                     * */
+                    /*$.ajax({
+                        url: "http://us.xiwanglife.com/userservice/login.do?",
+                        async: false,
+                        type: 'POST',
+                        data: {
+                            userName: oUname.value, password: oUpass.value
+                        },
+                        success: function (data) {
+                            console.log(data);
+                            $.cookie("US_SESSION_ID", data.sessionId, {domain: '.xiwanglife.com'});
+                        }
+                    });*/
+                    //alert(1);
+                    window.location.href = data.msg;
+                } else if (data.code === 0) {
+                    oError.innerHTML = data.msg;
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

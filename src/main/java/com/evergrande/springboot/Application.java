@@ -13,7 +13,7 @@ public class Application {
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(Application.class);
 		app.run(args);
-		logger.info("PortalApplication is sussess!");
+		logger.info("启动成功!");
 		System.err.println("sample started 1. http://172.16.102.178:9999/");
 		System.err.println("sample started 2. http://127.0.0.1:9999/");
 	}
