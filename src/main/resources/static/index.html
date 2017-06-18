@@ -38,12 +38,21 @@
     </style>
     <script>
         $(document).ready(function () {
-            
-            if (g.terminal === "pc") {
-                $("body").width(g.maxWidth);
-                $("body").css("margin", "0 auto");
+
+            //TODO
+            var stoken = $.cookie("userName");
+            console.log(stoken);
+            if(stoken){
+                if (g.terminal === "pc") {
+                    $("body").width(g.maxWidth);
+                    $("body").css("margin", "0 auto");
+                }
+                g.loadPage("finalReview", true);
+            }else {
+                window.location.href = "/login.html";
             }
-            g.loadPage("finalReview", true);
+
+
         });
     </script>
 </head>

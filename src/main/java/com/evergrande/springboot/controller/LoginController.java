@@ -1,7 +1,5 @@
 package com.evergrande.springboot.controller;
 
-import com.evergrande.springboot.common.AjaxResult;
-import com.evergrande.springboot.entity.User;
 import com.baomidou.kisso.SSOConfig;
 import com.baomidou.kisso.SSOHelper;
 import com.baomidou.kisso.SSOToken;
@@ -9,6 +7,8 @@ import com.baomidou.kisso.annotation.Action;
 import com.baomidou.kisso.annotation.Login;
 import com.baomidou.kisso.web.waf.request.WafRequestWrapper;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.evergrande.springboot.common.AjaxResult;
+import com.evergrande.springboot.entity.User;
 import com.evergrande.springboot.service.IUserService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,7 +76,7 @@ public class LoginController extends BaseController {
                  * 登录需要跳转登录前页面，自己处理 ReturnURL 使用
                  * HttpUtil.decodeURL(xx) 解码后重定向
                  */
-                ajaxResult.setCode(1).setMsg("/index.html").setObj(st);
+                ajaxResult.setCode(1).setMsg("/").setObj(st);
                 return ajaxResult;
             }
         }
