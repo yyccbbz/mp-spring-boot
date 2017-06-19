@@ -1,10 +1,10 @@
-<!--<header class="bar bar-nav ">
+<header class="bar bar-nav ">
     <a class="button button-link button-nav pull-left back" href="/">
         <span class="icon icon-left" style=""></span>
         返回
     </a>
-    <h1 class='title'></h1>
-</header>-->
+    <h1 class='title'>初审</h1>
+</header>
 
 <div class="content">
     <div class="top-bar" style="height:30px;font-size:13px;width:98%;margin:0 auto">
@@ -22,7 +22,8 @@
     p4.initPage = function () {
         g.queryData(p4.date, "review/firstReview", function (data) {
             p4.footTable = p4.initTable(data, "firstReview-table-foot", p4.formatFootTableData);
-            $("#firstReview-table").height(g.h - $("#firstReview .top-bar:first").height() - p4.footTable.scrollTable.height());
+            $("#firstReview-table").height(g.h - $("#firstReview .top-bar:first").height()
+                                            - p4.footTable.scrollTable.height() - $("#firstReview header").height());
             p4.table = p4.initTable(data, "firstReview-table", p4.formatData);
             p4.table.setFootTable(p4.footTable);
         });

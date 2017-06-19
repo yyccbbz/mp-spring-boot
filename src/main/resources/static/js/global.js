@@ -12,6 +12,9 @@ var p = {}; //pages
 var p1 = {};
 p.final = p1;
 
+var p0 = {};
+p.homepage = p0;
+
 var p2 = {};
 p.finalReview = p2;
 var p3 = {};
@@ -110,7 +113,7 @@ g.initPageDate = function (pageId) {
     if (cookieDate && cookieDate !== "null" && cookieDate.length !== 0) {
         $("#" + pageId + " .span-date").text(cookieDate);
         p[pageId].date = cookieDate;
-        alert($.cookie(pageId));
+        // alert($.cookie(pageId));
         $.cookie(pageId, null);
     } else {
         $("#" + pageId + " .span-date").text(g.fdate);
@@ -192,6 +195,11 @@ g.loadToolbar = function (pageId) {
         success: function (text, textStatus) {
             $("#" + pageId + " .top-bar").html(text);
             g.initPageDate(pageId);
+            $("#" + pageId + " .toolbar-menu").click(function(){
+                var nav = $('.g-nav');
+                nav.show(300);
+                nav.children().addClass('navAnimate');
+            });
         }
     });
 };

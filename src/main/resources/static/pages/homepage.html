@@ -1,0 +1,91 @@
+<header class="bar bar-nav ">
+    <!--<a class="button button-link button-nav pull-left back" href="/">-->
+        <!--<span class="icon icon-left" style=""></span>-->
+        <!--返回-->
+    <!--</a>-->
+    <h1 class='title'>首页</h1>
+</header>
+
+<div class="content">
+    <div class="top-bar" style="height:30px;font-size:13px;width:98%;margin:0 auto">
+
+    </div>
+    <div style="width:100%;position: relative">
+        <div id="homepage-table" style="width:98%;height:200px;margin: 0 auto;position:relative;"></div>
+        <div id="homepage-table-foot" style="width:98%;height:200px;margin: 0 auto;position:relative;"></div>
+    </div>
+</div>
+
+
+<script>
+
+    p0.initPage = function () {
+        g.queryData(p0.date, "/homepage", function (data) {
+            p0.footTable = p0.initTable(data, "homepage-table-foot", p0.formatFootTableData);
+            $("#homepage-table").height(g.h - $("#homepage .top-bar:first").height()
+                                            - p0.footTable.scrollTable.height() - $("#homepage header").height());
+            p0.table = p0.initTable(data, "homepage-table", p0.formatData);
+            p0.table.setFootTable(p0.footTable);
+        });
+    };
+
+    p0.formatData = function (sdata) {
+        var data = [];
+
+        for (var i = 0; i < sdata.length-2; i++) {
+            var d = {};
+            for (var column in sdata[i]) {
+                d[column] = sdata[i][column];
+            }
+            data.push(d);
+        }
+
+        return data;
+    };
+
+    p0.formatFootTableData = function (sdata) {
+        var data = [];
+
+        for (var i = sdata.length-2; i < sdata.length; i++) {
+            var d = {};
+            for (var column in sdata[i]) {
+                d[column] = sdata[i][column];
+            }
+            data.push(d);
+        }
+
+        return data;
+    };
+
+    p0.initTable = function (data, id, format) {
+
+        var fdata = format(data);
+        var table = Htable.create(id);
+
+        var fixColumns = [[
+            {field: 'hours_desc', title: '时间段', width: 80},
+        ]];
+
+        var columns = [[
+            {field: 'apply_cnt', title: '申请笔数', width: 80, sortable: true},
+            {field: 'apply_amt', title: '申请金额', width: 80, sortable: true},
+            {field: 'first_review_finish_cnt', title: '初审完成笔数', width: 80, sortable: true},
+            {field: 'second_review_finish_cnt', title: '复审完成笔数', width: 80, sortable: true},
+            {field: 'final_review_finish_cnt', title: '终审完成笔数', width: 80, sortable: true},
+            {field: 'review_accept_cnt', title: '审批通过笔数', width: 80, sortable: true},
+            {field: 'sign_finish_cnt', title: '签约笔数', width: 80, sortable: true},
+            {field: 'sign_finish_amt', title: '签约金额', width: 80, sortable: true},
+            {field: 'loan_batch_success_cnt', title: '放款成功笔数', width: 80, sortable: true},
+            {field: 'loan_batch_success_amt', title: '放款成功金额', width: 80, sortable: true},
+        ]];
+
+        table.setMaxHeight($("#" + id).height());
+        table.setFixcolumns(fixColumns);
+        table.setColumns(columns);
+        table.loadData(fdata);
+
+        return table;
+    };
+
+
+</script>

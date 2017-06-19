@@ -1,10 +1,10 @@
-<!--<header class="bar bar-nav ">
+<header class="bar bar-nav ">
     <a class="button button-link button-nav pull-left back" href="/">
         <span class="icon icon-left" style=""></span>
         返回
     </a>
-    <h1 class='title'></h1>
-</header>-->
+    <h1 class='title'>终审</h1>
+</header>
 
 <div class="content">
     <div class="top-bar" style="height:30px;font-size:13px;width:98%;margin:0 auto">
@@ -22,7 +22,8 @@
     p2.initPage = function () {
         g.queryData(p2.date, "review/finalReview", function (data) {
             p2.footTable = p2.initTable(data, "finalReview-table-foot", p2.formatFootTableData);
-            $("#finalReview-table").height(g.h - $("#finalReview .top-bar:first").height() - p2.footTable.scrollTable.height());
+            $("#finalReview-table").height(g.h - $("#finalReview .top-bar:first").height()
+                                            - p2.footTable.scrollTable.height() - $("#finalReview header").height());
             p2.table = p2.initTable(data, "finalReview-table", p2.formatData);
             p2.table.setFootTable(p2.footTable);
         });

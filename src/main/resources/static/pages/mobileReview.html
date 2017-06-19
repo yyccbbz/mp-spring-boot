@@ -1,10 +1,10 @@
-<!--<header class="bar bar-nav ">
+<header class="bar bar-nav ">
     <a class="button button-link button-nav pull-left back" href="/">
         <span class="icon icon-left" style=""></span>
         返回
     </a>
-    <h1 class='title'></h1>
-</header>-->
+    <h1 class='title'>电审</h1>
+</header>
 
 <div class="content">
     <div class="top-bar" style="height:30px;font-size:13px;width:98%;margin:0 auto">
@@ -23,7 +23,8 @@
         /*url 实际字段*/
         g.queryData(p3.date, "review/mobileReview", function (data) {
             p3.footTable = p3.initTable(data, "mobileReview-table-foot", p3.formatFootTableData);
-            $("#mobileReview-table").height(g.h - $("#mobileReview .top-bar:first").height() - p3.footTable.scrollTable.height());
+            $("#mobileReview-table").height(g.h - $("#mobileReview .top-bar:first").height()
+                                                - p3.footTable.scrollTable.height() - $("#mobileReview header").height());
             p3.table = p3.initTable(data, "mobileReview-table", p3.formatData);
             p3.table.setFootTable(p3.footTable);
         });

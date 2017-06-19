@@ -34,7 +34,7 @@
 	margin-top: 20px;
 	font-size: 20px;
 	color: #fff;
-	background: #1c5050;
+	background: #009688;
 	border-radius: 2px;
 }
 .login_box .logo{
@@ -63,6 +63,10 @@
 		padding: 13px 16px;
 	}      
 	.login_box .button{
+		height: 50px;
+	}
+	.logo img{
+		width: 50px;
 		height: 50px;
 	}
 }

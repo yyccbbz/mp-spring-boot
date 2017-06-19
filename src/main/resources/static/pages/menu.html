@@ -1,0 +1,140 @@
+<section class="m-nav"></section>
+<script type="text/javascript">
+    var n = {
+        arr : ["首页","申请","审批","签约","放款","统计"],
+        cacheNavData:{
+            "申请":[
+                {"name":'申请',"page":''}
+            ],
+            "审批":[
+                {"name":'电审',"page":'mobileReview'},
+                {"name":'初审',"page":'firstReview'},
+                {"name":'复审',"page":'secondReview'},
+                {"name":'终审',"page":'finalReview'},
+                {"name":'汇总',"page":''},
+                {"name":'信审专员',"page":''}
+            ],
+            "签约":[
+                {"name":'面试',"page":''}
+            ],
+            "放款":[
+                {"name":'放款',"page":''}
+            ],
+            "统计":[
+                {"name":'汇总',"page":''}
+            ]
+        },
+        nav : $('.g-nav'),
+        init:function(){
+            var self = this;
+            setTimeout(function(){
+                // 创建dom
+                var ul = $('<ul class="items"></ul>');
+                var h = self.nav.height()*0.44 > 330 ? 330 : self.nav.height()*0.44-30;
+                // 设置样式；
+                for(var i = 0;i < self.arr.length; i++){
+                    var li = $('<li class="item" style="font-size:16px;"></li>');
+                    if(self.arr.length < 7){
+                        li.html(self.arr[i]).css({
+                            'width':'50%',
+                            'height':h / Math.ceil(self.arr.length/2)+'px',
+                            'line-height':h / Math.ceil(self.arr.length/2)+'px'
+                        });
+                        if(i > 1){// 除第一行之外的所有行 上移 1像素 保持边框一致。
+                            li.css({'margin-top':'-1px'});
+                        };
+                        if( i%2 == 1){
+                            li.css({'margin-left':'-1px'});
+                        };
+                    }else{
+                        li.html(self.arr[i]).css({
+                            'width':100 / 3+'%',
+                            'height':h / Math.ceil(self.arr.length/3)+'px',
+                            'line-height':h / Math.ceil(self.arr.length/3)+'px'
+                        });
+                        if(i > 2){// 除第一行之外的所有行 上移 1像素 保持边框一致。
+                            li.css({'margin-top':'-1px'});
+                        };
+                        if( i%2 == 1){
+                            li.css({'margin-left':'-1px'});
+                        };
+                    }
+                    ul.append(li);
+                }
+                self.nav.children().append(ul);
+                self.events();
+            },300);
+        },
+        events: function(){
+            this.navControl();
+        },
+        navControl:function(){
+            var self = this;
+            // 关闭导航页
+            self.nav.click(function(){
+                self.nav.hide(300);
+                self.nav.find('li').removeClass('select');
+                $('.cacheNav').remove();
+            });
+            // 导航菜单阻止事件捕获
+            self.nav.children().click(function(e){
+                e.stopPropagation();
+            });
+            //  菜单操作
+            self.nav.children().delegate('.item','click',function(){
+                $('.cacheNav').remove();// 清空二级菜单
+                if($(this).hasClass('select')){ // 当前导航为已选中导航，return;
+                    $(this).removeClass('select');
+                    $(this).parent().css('overflow-y','hidden');
+                    return;
+                }
+                // 添加选中样式，获取导航个数用来判断排列布局。
+                $(this).addClass('select').siblings().removeClass('select');
+                var leng = self.arr.length; // 一级菜单个数；
+                var thisIndex  = $(this).index();
+                var index = 0;//eq(i) 后添加二级导航 ， i为索引号；
+                var t = $(this).text();
+                if(leng < 8){// 两列
+                    index = thisIndex%2 == 0 ? thisIndex+1: thisIndex;
+                }else{// 三列
+                    if((thisIndex+1)%3 == 0){index = thisIndex  };//2
+                    if((thisIndex+1)%3 == 1){index = thisIndex+2};//1
+                    if((thisIndex+1)%3 == 2){index = thisIndex+1;}//0
+                }
+                var cacheBox = $('<div class="cacheNav"></div>'); // 二级导航盒子
+                // 判断i是否能取到对应dom
+                cacheBox.animate({"height":$(this).height()/2},100);// 二级菜单设置高度
+                if($(this).parent().children().eq(index).index() == self.arr.length-1){
+                    $(this).parent().append(cacheBox).scrollTop($(this).parent().height()+48);
+                }else{
+                    $(this).parent().children().eq(index).after(cacheBox);
+                }
+                $(this).parent().css('overflow-y','scroll');
+                // 为二级菜单添加内容。
+                if(!self.cacheNavData[t])return;
+                var cacheItems = $('<ul class="cacheItems"></ul>').css('width',self.cacheNavData[t].length*$(this).width())
+                for(var i = 0;i < self.cacheNavData[t].length; i++){
+                    var a = '<li class="cacheItem"'
+                        +'style="width:'+$(this).width()+'px;line-height:'+$(this).height()/2+'px;"'
+                        +'data-page="'+ self.cacheNavData[t][i].page+'"'
+                        +'onclick="pageChange(this)"'
+                        +'>'+self.cacheNavData[t][i].name+'</li>';
+                    cacheItems.append(a);
+                };
+                cacheBox.append(cacheItems);
+            })
+        }
+    };
+    n.init();
+    //页面跳转
+    function pageChange(e){
+        var u = $(e).attr('data-page');
+//        $.ajax({
+//            url:"/pages/"+u,
+//            success:function(res){
+//                console.log(res)
+//            }
+//        })
+        g.loadPage(u, true);
+    }
+</script>

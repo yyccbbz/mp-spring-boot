@@ -1,18 +1,32 @@
 <style>
-.toolbar-menu, .toolbar-calender{float:left}
-.toolbar-menu{height: 100%;width: 30px}
-.span-date{float:right;line-height: 30px}
+    .toolbar-menu, .toolbar-calender {
+        float: left
+    }
+
+    .toolbar-menu {
+        height: 100%;
+        width: 30px
+    }
+
+    .span-date {
+        float: right;
+        line-height: 30px
+    }
 </style>
+
 <div class="toolbar" style="height:100%;width:100%">
     <div class="toolbar-menu">
-        <span style="display: inline-block;text-align:center;width:35px;height:30px;padding-top:7px" >
-            <img alt="菜单" style="width:22px;height:18px;" src="../imgs/menu.png" />
+        <span style="display: inline-block;text-align:center;width:35px;height:30px;padding-top:7px">
+            <img alt="菜单" style="width:22px;height:18px;" src="../imgs/menu.png"/>
         </span>
     </div>
+
     <div class="toolbar-calender">
         <div style="position:relative;z-index: 10000;">
-            <div style="position:absolute;margin-top:3px"><span><img src="../imgs/calendar.png" style="width:29px;height:27px;"/></span></div>
-            <input class="report-date" type="text"  placeholder="请点击选择查询日期" style="width:30px;height:30px;font-size:20px;opacity:0" />
+            <div style="position:absolute;margin-top:3px"><span><img src="../imgs/calendar.png"
+                                                                     style="width:29px;height:27px;"/></span></div>
+            <input class="report-date" type="text" placeholder="请点击选择查询日期"
+                   style="width:30px;height:30px;font-size:20px;opacity:0"/>
         </div>
     </div>
     <div class="span-date">

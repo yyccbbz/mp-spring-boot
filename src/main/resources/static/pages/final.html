@@ -26,7 +26,7 @@
             data = JSON.parse(o);
             p1.footTable = p1.initTable(data, "final-table-foot", p1.formatFootTableData);
              
-            $("#final-table").height(g.h- $("#final .top-bar:first").height() - p1.footTable.scrollTable.height());
+            $("#final-table").height(g.h- $("#final .top-bar:first").height() - p1.footTable.scrollTable.height() - $("#final header").height() );
             p1.table = p1.initTable(data, "final-table", p1.formatData);
             p1.table.setFootTable(p1.footTable);
         });
