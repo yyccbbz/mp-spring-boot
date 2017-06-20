@@ -1,0 +1,86 @@
+<header class="bar bar-nav ">
+    <a class="button button-link button-nav pull-left back" href="/">
+        <span class="icon icon-left" style=""></span>
+        返回
+    </a>
+    <h1 class='title'>审批汇总</h1>
+</header>
+
+<div class="content">
+    <div class="top-bar" style="height:30px;font-size:13px;width:98%;margin:0 auto">
+
+    </div>
+    <div style="width:100%;position: relative">
+        <div id="reviewTotal-table" style="width:98%;height:200px;margin: 0 auto;position:relative;"></div>
+        <div id="reviewTotal-table-foot" style="width:98%;height:200px;margin: 0 auto;position:relative;"></div>
+    </div>
+</div>
+
+
+<script>
+
+    p7.initPage = function () {
+        g.queryData(p7.date, "review/reviewTotal", function (data) {
+            p7.footTable = p7.initTable(data, "reviewTotal-table-foot", p7.formatFootTableData);
+            $("#reviewTotal-table").height(g.h - $("#reviewTotal .top-bar:first").height()
+                                            - p7.footTable.scrollTable.height() - $("#reviewTotal header").height());
+            p7.table = p7.initTable(data, "reviewTotal-table", p7.formatData);
+            p7.table.setFootTable(p7.footTable);
+        });
+    };
+
+    p7.formatData = function (sdata) {
+        var data = [];
+
+        for (var i = 0; i < sdata.length-2; i++) {
+            var d = {};
+            for (var column in sdata[i]) {
+                d[column] = sdata[i][column];
+            }
+            data.push(d);
+        }
+
+        return data;
+    };
+
+    p7.formatFootTableData = function (sdata) {
+        var data = [];
+
+        for (var i = sdata.length-2; i < sdata.length; i++) {
+            var d = {};
+            for (var column in sdata[i]) {
+                d[column] = sdata[i][column];
+            }
+            data.push(d);
+        }
+
+        return data;
+    };
+
+    p7.initTable = function (data, id, format) {
+
+        var fdata = format(data);
+        var table = Htable.create(id);
+
+        var fixColumns = [[
+            {field: 'hours_desc', title: '时间段', width: 80},
+        ]];
+
+        var columns = [[
+            {field: 'review_accept_cnt', title: '审批通过笔数', width: 80, sortable: true},
+            {field: 'review_refuse_cnt', title: '人工审批（初审+复审+终审）拒绝笔数', width: 80, sortable: true},
+            {field: 'review_refuse_amt', title: '人工审批（初审+复审+终审）拒绝金额', width: 80, sortable: true},
+            {field: 'review_finish_cnt', title: '人工审批（复审+终审）完成笔数', width: 80, sortable: true},
+            {field: 'review_finish_amt', title: '人工审批（复审+终审）完成金额', width: 80, sortable: true},
+        ]];
+
+        table.setMaxHeight($("#" + id).height());
+        table.setFixcolumns(fixColumns);
+        table.setColumns(columns);
+        table.loadData(fdata);
+
+        return table;
+    };
+
+
+</script>

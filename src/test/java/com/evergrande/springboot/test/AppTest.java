@@ -18,10 +18,10 @@ import java.io.InputStreamReader;
 public class AppTest {
 
 //    File file = new File("E:\\Users\\IdeaProjects\\mp-spring-boot\\" +
-//            "src\\test\\java\\com\\evergrande\\springboot\\test\\shouye.txt");
+//            "src\\test\\java\\com\\evergrande\\springboot\\test\\homepage.txt");
 
     File file = new File("E:\\Workspace\\intellij2017\\mp-spring-boot\\src" +
-            "\\test\\java\\com\\evergrande\\springboot\\test\\shouye.txt");
+            "\\test\\java\\com\\evergrande\\springboot\\test\\contract_sign.txt");
 
     @Test
     public void testHtml() throws Exception {

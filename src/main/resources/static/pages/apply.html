@@ -1,0 +1,97 @@
+<header class="bar bar-nav ">
+    <a class="button button-link button-nav pull-left back" href="/">
+        <span class="icon icon-left" style=""></span>
+        返回
+    </a>
+    <h1 class='title'>申请</h1>
+</header>
+
+<div class="content">
+    <div class="top-bar" style="height:30px;font-size:13px;width:98%;margin:0 auto">
+
+    </div>
+    <div style="width:100%;position: relative">
+        <div id="apply-table" style="width:98%;height:200px;margin: 0 auto;position:relative;"></div>
+        <div id="apply-table-foot" style="width:98%;height:200px;margin: 0 auto;position:relative;"></div>
+    </div>
+</div>
+
+
+<script>
+
+    p6.initPage = function () {
+        g.queryData(p6.date, "apply", function (data) {
+            p6.footTable = p6.initTable(data, "apply-table-foot", p6.formatFootTableData);
+            $("#apply-table").height(g.h - $("#apply .top-bar:first").height()
+                                            - p6.footTable.scrollTable.height() - $("#apply header").height());
+            p6.table = p6.initTable(data, "apply-table", p6.formatData);
+            p6.table.setFootTable(p6.footTable);
+        });
+    };
+
+    p6.formatData = function (sdata) {
+        var data = [];
+
+        for (var i = 0; i < sdata.length-2; i++) {
+            var d = {};
+            for (var column in sdata[i]) {
+                d[column] = sdata[i][column];
+            }
+            data.push(d);
+        }
+
+        return data;
+    };
+
+    p6.formatFootTableData = function (sdata) {
+        var data = [];
+
+        for (var i = sdata.length-2; i < sdata.length; i++) {
+            var d = {};
+            for (var column in sdata[i]) {
+                d[column] = sdata[i][column];
+            }
+            data.push(d);
+        }
+
+        return data;
+    };
+
+    p6.initTable = function (data, id, format) {
+
+        var fdata = format(data);
+        var table = Htable.create(id);
+
+        var fixColumns = [[
+            {field: 'hours_desc', title: '时间段', width: 80},
+        ]];
+
+        var columns = [[
+            {field: 'apply_cnt', title: '申请笔数', width: 80, sortable: true},
+            {field: 'apply_amt', title: '申请金额', width: 80, sortable: true},
+            {field: 'apply_reduction_cnt', title: '优惠利率申请件数', width: 80, sortable: true},
+            {field: 'apply_reduction_amt', title: '优惠利率申请金额', width: 80, sortable: true},
+            {field: 'apply_cnt_m1', title: '1月期申请笔数', width: 80, sortable: true},
+            {field: 'apply_amt_m1', title: '1月期申请金额', width: 80, sortable: true},
+            {field: 'apply_cnt_m3', title: '3月期申请笔数', width: 80, sortable: true},
+            {field: 'apply_amt_m3', title: '3月期申请金额', width: 80, sortable: true},
+            {field: 'apply_cnt_m6', title: '6月期申请笔数', width: 80, sortable: true},
+            {field: 'apply_amt_m6', title: '6月期申请金额', width: 80, sortable: true},
+            {field: 'apply_cnt_m12', title: '12月期申请笔数', width: 80, sortable: true},
+            {field: 'apply_amt_m12', title: '12月期申请金额', width: 80, sortable: true},
+            {field: 'apply_cnt_m24', title: '24月期申请笔数', width: 80, sortable: true},
+            {field: 'apply_amt_m24', title: '24月期申请金额', width: 80, sortable: true},
+            {field: 'apply_cnt_m36', title: '36月期申请笔数', width: 80, sortable: true},
+            {field: 'apply_amt_m36', title: '36月期申请金额', width: 80, sortable: true},
+        ]];
+
+        table.setMaxHeight($("#" + id).height());
+        table.setFixcolumns(fixColumns);
+        table.setColumns(columns);
+        table.loadData(fdata);
+
+        return table;
+    };
+
+
+</script>

@@ -1,0 +1,87 @@
+<header class="bar bar-nav ">
+    <a class="button button-link button-nav pull-left back" href="/">
+        <span class="icon icon-left" style=""></span>
+        返回
+    </a>
+    <h1 class='title'>面签</h1>
+</header>
+
+<div class="content">
+    <div class="top-bar" style="height:30px;font-size:13px;width:98%;margin:0 auto">
+
+    </div>
+    <div style="width:100%;position: relative">
+        <div id="contractSign-table" style="width:98%;height:200px;margin: 0 auto;position:relative;"></div>
+        <div id="contractSign-table-foot" style="width:98%;height:200px;margin: 0 auto;position:relative;"></div>
+    </div>
+</div>
+
+
+<script>
+
+    p8.initPage = function () {
+        g.queryData(p8.date, "contractSign", function (data) {
+            p8.footTable = p8.initTable(data, "contractSign-table-foot", p8.formatFootTableData);
+            $("#contractSign-table").height(g.h - $("#contractSign .top-bar:first").height()
+                                            - p8.footTable.scrollTable.height() - $("#contractSign header").height());
+            p8.table = p8.initTable(data, "contractSign-table", p8.formatData);
+            p8.table.setFootTable(p8.footTable);
+        });
+    };
+
+    p8.formatData = function (sdata) {
+        var data = [];
+
+        for (var i = 0; i < sdata.length-2; i++) {
+            var d = {};
+            for (var column in sdata[i]) {
+                d[column] = sdata[i][column];
+            }
+            data.push(d);
+        }
+
+        return data;
+    };
+
+    p8.formatFootTableData = function (sdata) {
+        var data = [];
+
+        for (var i = sdata.length-2; i < sdata.length; i++) {
+            var d = {};
+            for (var column in sdata[i]) {
+                d[column] = sdata[i][column];
+            }
+            data.push(d);
+        }
+
+        return data;
+    };
+
+    p8.initTable = function (data, id, format) {
+
+        var fdata = format(data);
+        var table = Htable.create(id);
+
+        var fixColumns = [[
+            {field: 'dates', title: '日期', width: 80, sortable: true},
+        ]];
+
+        var columns = [[
+            {field: 'sign_wait_cnt', title: '待签笔数', width: 80, sortable: true},
+            {field: 'sign_wait_amt', title: '待签金额', width: 80, sortable: true},
+            {field: 'sign_finish_cnt', title: '签约笔数', width: 80, sortable: true},
+            {field: 'sign_finish_amt', title: '签约金额', width: 80, sortable: true},
+            {field: 'sign_invalid_cnt', title: '签约失效笔数', width: 80, sortable: true},
+            {field: 'sign_invalid_amt', title: '签约失效金额', width: 80, sortable: true},
+        ]];
+
+        table.setMaxHeight($("#" + id).height());
+        table.setFixcolumns(fixColumns);
+        table.setColumns(columns);
+        table.loadData(fdata);
+
+        return table;
+    };
+
+
+</script>

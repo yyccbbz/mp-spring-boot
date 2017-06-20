@@ -23,6 +23,12 @@ var p4 = {};
 p.firstReview = p4;
 var p5 = {};
 p.secondReview = p5;
+var p6 = {};
+p.apply = p6;
+var p7 = {};
+p.reviewTotal = p7;
+var p8 = {};
+p.contractSign = p8;
 
 //命名空间的问题
 

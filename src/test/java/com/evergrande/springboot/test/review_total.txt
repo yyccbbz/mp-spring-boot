@@ -1,0 +1,6 @@
+时间段,hours_desc
+审批通过笔数,review_accept_cnt
+人工审批（初审+复审+终审）拒绝笔数,review_refuse_cnt
+人工审批（初审+复审+终审）拒绝金额,review_refuse_amt
+人工审批（复审+终审）完成笔数,review_finish_cnt
+人工审批（复审+终审）完成金额,review_finish_amt

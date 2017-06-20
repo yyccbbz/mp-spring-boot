@@ -28,6 +28,9 @@ public class ReviewController extends BaseController {
     @Value(value = "${secondReview_http_id}")
     private String secondReview_http_id;
 
+    @Value(value = "${reviewTotal_http_id}")
+    private String reviewTotal_http_id;
+
     @RequestMapping("/mobileReview")
     public String mobileReview() {
         return parseHttpJsonResult(mobileReview_http_id);
@@ -46,6 +49,11 @@ public class ReviewController extends BaseController {
     @RequestMapping("/finalReview")
     public String finalReview() {
         return parseHttpJsonResult(finalReview_http_id);
+    }
+
+    @RequestMapping("/reviewTotal")
+    public String reviewTotal() {
+        return parseHttpJsonResult(reviewTotal_http_id);
     }
 
 

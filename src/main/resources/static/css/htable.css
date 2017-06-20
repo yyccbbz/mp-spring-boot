@@ -100,13 +100,13 @@ tr:nth-child(even) {background: #f6f6f6}
     margin-bottom:-5px
 }
 .trend-red-img{
-    background: url(/imgs/red.png) no-repeat 0 0;
+    background: url(../imgs/red.png) no-repeat 0 0;
 }
 .trend-green-img{
-    background:  url(/imgs/green.png) no-repeat 0 0;
+    background:  url(../imgs/green.png) no-repeat 0 0;
 }
 .trend-equal-img{
-    background:  url(/imgs/equal.png) no-repeat 0 0;
+    background:  url(../imgs/equal.png) no-repeat 0 0;
 }
 table.bottom-table{
     position:absolute;

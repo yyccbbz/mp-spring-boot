@@ -157,10 +157,12 @@
     <div class="page-group" style="margin: 0 auto;">
         <div class="page" id='final'></div>
         <div class="page" id='homepage'></div>
+        <div class="page" id='apply'></div>
         <div class="page" id='finalReview'></div>
         <div class="page" id='mobileReview'></div>
         <div class="page" id='firstReview'></div>
         <div class="page" id='secondReview'></div>
+        <div class="page" id='reviewTotal'></div>
     </div>
     <section class="g-nav">
         <section class="m-nav">
@@ -191,18 +193,18 @@
             arr: ["首页", "申请", "审批", "签约", "放款", "统计"],
             cacheNavData: {
                 "申请": [
-                    {"name": '申请', "page": ''}
+                    {"name": '申请', "page": 'apply'}
                 ],
                 "审批": [
                     {"name": '电审', "page": 'mobileReview'},
                     {"name": '初审', "page": 'firstReview'},
                     {"name": '复审', "page": 'secondReview'},
                     {"name": '终审', "page": 'finalReview'},
-                    {"name": '汇总', "page": ''},
+                    {"name": '汇总', "page": 'reviewTotal'},
                     {"name": '信审专员', "page": ''}
                 ],
                 "签约": [
-                    {"name": '面试', "page": ''}
+                    {"name": '面签', "page": ''}
                 ],
                 "放款": [
                     {"name": '放款', "page": ''}
