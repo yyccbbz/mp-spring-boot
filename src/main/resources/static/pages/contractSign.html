@@ -32,7 +32,7 @@
     p8.formatData = function (sdata) {
         var data = [];
 
-        for (var i = 0; i < sdata.length-2; i++) {
+        for (var i = 0; i < sdata.length-1; i++) {
             var d = {};
             for (var column in sdata[i]) {
                 d[column] = sdata[i][column];
@@ -46,7 +46,7 @@
     p8.formatFootTableData = function (sdata) {
         var data = [];
 
-        for (var i = sdata.length-2; i < sdata.length; i++) {
+        for (var i = sdata.length-1; i < sdata.length; i++) {
             var d = {};
             for (var column in sdata[i]) {
                 d[column] = sdata[i][column];

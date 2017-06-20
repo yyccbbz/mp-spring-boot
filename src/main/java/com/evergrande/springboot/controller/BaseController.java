@@ -46,19 +46,18 @@ public class BaseController {
      * @param id
      * @return
      */
-    protected String parseHttpJsonResult(String id){
+    protected String parseHttpJsonResult(String id) {
 
         String day = request.getParameter("day");
-        System.out.println("day = " + day);
+        String today = DateUtil.thisDate();
+        String str = "";
 
-        if(StringUtils.isEmpty(day)){
-            day = DateUtil.thisDate();
+        if (StringUtils.isEmpty(day)) {
+            day = today;
         }
 
-        String str = "";
-        if(StringUtils.isNotEmpty(id)){
-
-            String url = base_http_url+id+"&date="+day;
+        if (StringUtils.isNotEmpty(id)) {
+            String url = base_http_url + id + "&date=" + day;
             System.err.println("url =" + url);
             try {
                 str = httpAPIService.doGet(url);
@@ -69,7 +68,22 @@ public class BaseController {
             }
             JSONArray values = JSON.parseObject(str).getJSONObject("details").getJSONObject("list").getJSONArray("values");
 
-//            System.err.println("values = " + values.toJSONString());
+            // 首页，申请，电审，初审，复审，终审，审批汇总--24+2
+            //String[] strarr1 = {"171","172","165","166","167","164","173"};
+            // 签约，放款--24+1
+            //String[] strarr2 = {"174","101"};
+            // 信审专员--24+0
+            //String[] strarr3 = {"100"};
+
+            // 如果当天，那么要看小时数
+            if (today.equals(day) && values != null && values.size() > 0) {
+                String thisTime = DateUtil.thisTime();
+                String s = thisTime.split(":")[0];
+                int num = 24 - Integer.parseInt(s);
+                for (int i = 1 ; i < num; i++){
+                    values.remove(0);
+                }
+            }
             return values.toJSONString();
         }
         return str;
