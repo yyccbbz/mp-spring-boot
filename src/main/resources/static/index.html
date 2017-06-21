@@ -184,7 +184,7 @@
         $(document).ready(function () {
             //TODO
             var stoken = $.cookie("userName");
-            console.log(stoken);
+//            console.log(stoken);
             if(stoken){
                 if (g.terminal === "pc") {
                     $("body").width(g.maxWidth);
@@ -262,7 +262,7 @@
                 }else{
                     $(dom).children(':first').html(name.Html).addClass('back');
                     var obj = d.values[name.Text];
-                    console.log(obj)
+//                    console.log(obj)
                     if(obj){// 当前二级不存在内容
                         for(var i = 0;i < obj.length; i++){
                             if($(dom).children().eq(i+1) == undefined){
