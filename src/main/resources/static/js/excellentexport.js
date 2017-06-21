@@ -149,6 +149,7 @@ var ExcellentExport = (function() {
     } else if (typeof exports !== 'undefined') {
         // Support Node.js specific `module.exports` (which can be a function)
         if (typeof module !== 'undefined' && module.exports) {
+            //noinspection JSAnnotator
             exports = module.exports = ExcellentExport;
         }
         // But always support CommonJS module 1.1.1 spec (`exports` cannot be a function)
