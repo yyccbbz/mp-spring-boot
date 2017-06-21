@@ -153,9 +153,26 @@
         <section class="nav-content">
             <div class="itemBox">
                 <ul class="primary items">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
                 </ul>
                 <ul class="next items">
                     <li style="color: #ffe91f;"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
                 </ul>
             </div>
         </section>
@@ -246,6 +263,7 @@
                 }else{
                     $(dom).children(':first').html(name.Html).addClass('back');
                     var obj = d.values[name.Text];
+                    console.log(obj)
                     if(obj){// 当前二级不存在内容
                         for(var i = 0;i < obj.length; i++){
                             if($(dom).children().eq(i+1) == undefined){
@@ -319,7 +337,7 @@
                         if(i < 3){ // 第一行
                             ul.children().eq(i).css({'border-top':'none',"border-bottom":"none"});
                         };
-                        if( i > ul.children().length-2){ //最后一行
+                        if( i >= ul.children().length-3){ //最后一行
                             ul.children().eq(i).css({'border-top':'none',"border-bottom":"none"});
                         };
                         if( i%3 == 0 || i%3 == 2){ // 第一列&最后一列
@@ -339,7 +357,7 @@
                             'Text': $(this).text(),
                             'Html' : $(this).html()
                         };
-                        if(name == "首页"){
+                        if(name.Text == "首页"){
                             self.pageChange('homepage');
                         }else{
                             var size = -(dom.outerWidth()+40);
@@ -348,12 +366,14 @@
                             self.initText(self.module.children(':last'),name);
                         }
                     }else{
+                        $(this).unbind('click');
                         if($(this).hasClass('back')){ // 返回首菜单
                             dom.stop().animate({"opacity":0},400);
                             self.module.stop().animate({'left':0},500);
                             dom.children().html(" ").attr('data-page',"");
                         }else{ // 跳转页面
-                            self.pageChange('homepage');
+                            if($(this).attr('data-page').length < 1)return;
+                            self.pageChange($(this).attr('data-page'));
                         }
                     }
                 })
