@@ -1,0 +1,15 @@
+日期,dates
+审批人员ID,userid
+岗位,rolename
+当日新增待审笔数,review_add_cnt
+当日新增待审金额,review_add_amt
+当日审批完成笔数,review_finish_cnt
+当日审批完成金额,review_finish_amt
+历史审批完成笔数,review_finish_all_cnt
+历史审批完成金额,review_finish_all_amt
+当日审批拒绝笔数,review_refuse_cnt
+当日审批拒绝金额,review_refuse_amt
+历史审批拒绝笔数,review_refuse_all_cnt
+历史审批拒绝金额,review_refuse_all_amt
+当前剩余待审笔数,review_wait_cnt
+当前剩余待审金额,review_wait_amt

@@ -21,7 +21,7 @@ public class AppTest {
 //            "src\\test\\java\\com\\evergrande\\springboot\\test\\homepage.txt");
 
     File file = new File("E:\\Workspace\\intellij2017\\mp-spring-boot\\src" +
-            "\\test\\java\\com\\evergrande\\springboot\\test\\contract_sign.txt");
+            "\\test\\java\\com\\evergrande\\springboot\\test\\loanBatch.txt");
 
     @Test
     public void testHtml() throws Exception {

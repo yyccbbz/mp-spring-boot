@@ -1,0 +1,100 @@
+<header class="bar bar-nav ">
+    <a class="button button-link button-nav pull-left back" href="/">
+        <span class="icon icon-left" style=""></span>
+        返回
+    </a>
+    <h1 class='title'>放款</h1>
+</header>
+
+<div class="content">
+    <div class="top-bar" style="height:30px;font-size:13px;width:98%;margin:0 auto">
+
+    </div>
+    <div style="width:100%;position: relative">
+        <div id="loanBatch-table" style="width:98%;height:200px;margin: 0 auto;position:relative;"></div>
+        <div id="loanBatch-table-foot" style="width:98%;height:200px;margin: 0 auto;position:relative;"></div>
+    </div>
+</div>
+
+
+<script>
+
+    p10.initPage = function () {
+        g.queryData(p10.date, "loanBatch", function (data) {
+            p10.footTable = p10.initTable(data, "loanBatch-table-foot", p10.formatFootTableData);
+            $("#loanBatch-table").height(g.h - $("#loanBatch .top-bar:first").height()
+                                            - p10.footTable.scrollTable.height() - $("#loanBatch header").height());
+            p10.table = p10.initTable(data, "loanBatch-table", p10.formatData);
+            p10.table.setFootTable(p10.footTable);
+        });
+    };
+
+    p10.formatData = function (sdata) {
+        var data = [];
+
+        for (var i = 0; i < sdata.length-1; i++) {
+            var d = {};
+            for (var column in sdata[i]) {
+                d[column] = sdata[i][column];
+            }
+            data.push(d);
+        }
+
+        return data;
+    };
+
+    p10.formatFootTableData = function (sdata) {
+        var data = [];
+
+        for (var i = sdata.length-1; i < sdata.length; i++) {
+            var d = {};
+            for (var column in sdata[i]) {
+                d[column] = sdata[i][column];
+            }
+            data.push(d);
+        }
+
+        return data;
+    };
+
+    p10.initTable = function (data, id, format) {
+
+        var fdata = format(data);
+        var table = Htable.create(id);
+
+        var fixColumns = [[
+            {field: 'dates', title: '日期', width: 80, sortable: true},
+        ]];
+
+        var columns = [[
+            {field: 'loan_batch_success_cnt', title: '放款成功笔数', width: 80, sortable: true},
+            {field: 'loan_batch_success_amt', title: '放款成功金额', width: 80, sortable: true},
+            {field: 'loan_batch_fail_cnt', title: '放款失败笔数', width: 80, sortable: true},
+            {field: 'loan_batch_fail_amt', title: '放款失败金额', width: 80, sortable: true},
+            {field: 'loan_unfinish_cnt', title: '当前未结清贷款笔数', width: 80, sortable: true},
+            {field: 'loan_unfinish_amt', title: '当前贷款余额（剩余未还本金）', width: 80, sortable: true},
+            {field: 'loan_finish_amt', title: '累计贷款结清金额', width: 80, sortable: true},
+            {field: 'loan_batch_success_1m_cnt', title: '1月期放款笔数', width: 80, sortable: true},
+            {field: 'loan_batch_success_1m_amt', title: '1月期放款金额', width: 80, sortable: true},
+            {field: 'loan_batch_success_3m_cnt', title: '3月期放款笔数', width: 80, sortable: true},
+            {field: 'loan_batch_success_3m_amt', title: '3月期放款金额', width: 80, sortable: true},
+            {field: 'loan_batch_success_6m_cnt', title: '6月期放款笔数', width: 80, sortable: true},
+            {field: 'loan_batch_success_6m_amt', title: '6月期放款金额', width: 80, sortable: true},
+            {field: 'loan_batch_success_12m_cnt', title: '12月期放款笔数', width: 80, sortable: true},
+            {field: 'loan_batch_success_12m_amt', title: '12月期放款金额', width: 80, sortable: true},
+            {field: 'loan_batch_success_24m_cnt', title: '24月期放款笔数', width: 80, sortable: true},
+            {field: 'loan_batch_success_24m_amt', title: '24月期放款金额', width: 80, sortable: true},
+            {field: 'loan_batch_success_36m_cnt', title: '36月期放款笔数', width: 80, sortable: true},
+            {field: 'loan_batch_success_36m_amt', title: '36月期放款金额', width: 80, sortable: true},
+        ]];
+
+        table.setMaxHeight($("#" + id).height());
+        table.setFixcolumns(fixColumns);
+        table.setColumns(columns);
+        table.loadData(fdata);
+
+        return table;
+    };
+
+
+</script>

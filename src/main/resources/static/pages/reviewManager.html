@@ -1,0 +1,95 @@
+<header class="bar bar-nav ">
+    <a class="button button-link button-nav pull-left back" href="/">
+        <span class="icon icon-left" style=""></span>
+        返回
+    </a>
+    <h1 class='title'>信审专员</h1>
+</header>
+
+<div class="content">
+    <div class="top-bar" style="height:30px;font-size:13px;width:98%;margin:0 auto">
+
+    </div>
+    <div style="width:100%;position: relative">
+        <div id="reviewManager-table" style="width:98%;height:200px;margin: 0 auto;position:relative;"></div>
+        <div id="reviewManager-table-foot" style="width:98%;height:200px;margin: 0 auto;position:relative;"></div>
+    </div>
+</div>
+
+
+<script>
+
+    p9.initPage = function () {
+        g.queryData(p9.date, "reviewManager", function (data) {
+            p9.footTable = p9.initTable(data, "reviewManager-table-foot", p9.formatFootTableData);
+            $("#reviewManager-table").height(g.h - $("#reviewManager .top-bar:first").height()
+                                            - p9.footTable.scrollTable.height() - $("#reviewManager header").height());
+            p9.table = p9.initTable(data, "reviewManager-table", p9.formatData);
+            p9.table.setFootTable(p9.footTable);
+        });
+    };
+
+    p9.formatData = function (sdata) {
+        var data = [];
+
+        for (var i = 0; i < sdata.length-1; i++) {
+            var d = {};
+            for (var column in sdata[i]) {
+                d[column] = sdata[i][column];
+            }
+            data.push(d);
+        }
+
+        return data;
+    };
+
+    p9.formatFootTableData = function (sdata) {
+        var data = [];
+
+        for (var i = sdata.length-1; i < sdata.length; i++) {
+            var d = {};
+            for (var column in sdata[i]) {
+                d[column] = sdata[i][column];
+            }
+            data.push(d);
+        }
+
+        return data;
+    };
+
+    p9.initTable = function (data, id, format) {
+
+        var fdata = format(data);
+        var table = Htable.create(id);
+
+        var fixColumns = [[
+            {field: 'dates', title: '日期', width: 80, sortable: true},
+        ]];
+
+        var columns = [[
+            {field: 'userid', title: '审批人员ID', width: 80, sortable: true},
+            {field: 'rolename', title: '岗位', width: 80, sortable: true},
+            {field: 'review_add_cnt', title: '当日新增待审笔数', width: 80, sortable: true},
+            {field: 'review_add_amt', title: '当日新增待审金额', width: 80, sortable: true},
+            {field: 'review_finish_cnt', title: '当日审批完成笔数', width: 80, sortable: true},
+            {field: 'review_finish_amt', title: '当日审批完成金额', width: 80, sortable: true},
+            {field: 'review_finish_all_cnt', title: '历史审批完成笔数', width: 80, sortable: true},
+            {field: 'review_finish_all_amt', title: '历史审批完成金额', width: 80, sortable: true},
+            {field: 'review_refuse_cnt', title: '当日审批拒绝笔数', width: 80, sortable: true},
+            {field: 'review_refuse_amt', title: '当日审批拒绝金额', width: 80, sortable: true},
+            {field: 'review_refuse_all_cnt', title: '历史审批拒绝笔数', width: 80, sortable: true},
+            {field: 'review_refuse_all_amt', title: '历史审批拒绝金额', width: 80, sortable: true},
+            {field: 'review_wait_cnt', title: '当前剩余待审笔数', width: 80, sortable: true},
+            {field: 'review_wait_amt', title: '当前剩余待审金额', width: 80, sortable: true},
+        ]];
+
+        table.setMaxHeight($("#" + id).height());
+        table.setFixcolumns(fixColumns);
+        table.setColumns(columns);
+        table.loadData(fdata);
+
+        return table;
+    };
+
+
+</script>

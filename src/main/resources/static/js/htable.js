@@ -330,6 +330,20 @@ var Htable = {
             foot.root.bind("touchstart", function () {
                 event.preventDefault();
             });
+
+            if(g.terminal === "pc"){
+                t.scrollTable.parent().unbind("scroll");
+                t.scrollTable.parent().css("overflow-x", "hidden");
+                t.footTable.scrollTable.parent().css("overflow-x", "scroll");
+                t.footTable.scrollTable.parent().scroll(function () {
+                    //TODO
+                    var target = $(this);
+                    var sl = target.scrollLeft();
+                    t.scrolleft = sl;
+                    t.scrollTable.parent().scrollLeft(sl);
+                    t.floatScrollTableTitlePanel.scrollLeft(sl);
+                });
+            }
             return t;
         };
 

@@ -29,6 +29,10 @@ var p7 = {};
 p.reviewTotal = p7;
 var p8 = {};
 p.contractSign = p8;
+var p9 = {};
+p.reviewManager = p9;
+var p10 = {};
+p.loanBatch = p10;
 
 //命名空间的问题
 

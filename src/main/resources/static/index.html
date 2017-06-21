@@ -147,6 +147,8 @@
         <div class="page" id='secondReview'></div>
         <div class="page" id='reviewTotal'></div>
         <div class="page" id='contractSign'></div>
+        <div class="page" id='reviewManager'></div>
+        <div class="page" id='loanBatch'></div>
     </div>
 
     <div class="nav" onclick="hide(this)">
@@ -180,7 +182,6 @@
 
     <script>
         $(document).ready(function () {
-
             //TODO
             var stoken = $.cookie("userName");
             console.log(stoken);
@@ -193,8 +194,6 @@
             }else {
                 window.location.href = "/login.html";
             }
-
-
         });
 
         var d = {
@@ -217,13 +216,13 @@
                     {"name":'复审',"page":'secondReview'},
                     {"name":'终审',"page":'finalReview'},
                     {"name":'汇总',"page":'reviewTotal'},
-                    {"name":'信审专员',"page":''}
+                    {"name":'信审专员',"page":'reviewManager'}
                 ],
                 "签约":[
                     {"name":'面签',"page":'contractSign'}
                 ],
                 "放款":[
-                    {"name":'放款',"page":''}
+                    {"name":'放款',"page":'loanBatch'}
                 ],
                 "统计":[
                     {"name":'汇总',"page":''}
