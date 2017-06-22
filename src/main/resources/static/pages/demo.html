@@ -1,0 +1,97 @@
+<header class="bar bar-nav ">
+    <a class="button button-link button-nav pull-left back" href="/">
+        <span class="icon icon-left" style=""></span>
+        返回
+    </a>
+    <h1 class='title'>demo</h1>
+</header>
+
+<div class="content">
+    <div class="top-bar" style="height:30px;font-size:13px;width:98%;margin:0 auto">
+        
+    </div>
+    <div style="width:100%;position: relative">
+        <div id="daily-table" style="width:98%;height:200px;margin: 0 auto;position:relative;"></div>
+        <div id="daily-table-foot" style="width:98%;height:200px;margin: 0 auto;position:relative;"></div>
+    </div>
+</div>
+
+
+<script>
+    
+    px.initPage = function () {
+        g.queryData(px.date, "daily", function (data) {
+            px.footTable = px.initTable(data, "daily-table-foot", px.formatFootTableData);
+            $("#daily-table").height(g.h- $("#daily .top-bar:first").height()
+                                    - px.footTable.scrollTable.height() - $("#daily header").height() );
+            px.table = px.initTable(data, "daily-table", px.formatData);
+            px.table.setFootTable(px.footTable);
+        });
+    };
+
+    px.formatData = function(sdata){
+        var data = sdata.details.days.values;
+        var data1 = [];
+        
+        for (var i = data.length - 1; i >= 0; i--) {
+            
+            var today = g.day;
+            var received = new Date(data[i]["time_name"]).getDate();
+            var d = {};
+            for (var column in data[i]) {
+                d[column] = data[i][column];
+            }
+            data1.push(d);
+        }
+        
+        return data1;
+    };
+
+    px.formatFootTableData = function(sdata){
+        var month = sdata.details.month.values[0];
+        var ds = [];
+        var d = {};
+
+        for (var column in month) {
+            d[column] = month[column];
+        }
+        d["time_name"] = "月核心指标";
+        ds.push(d);
+        return ds;
+    };
+
+    px.initTable =function(data, id, format){
+
+        var fdata = format(data);
+        var table = Htable.create(id);
+        
+        var fixColumns = [[
+                {field: 'time_name', title: '日期', width: 100},
+            ]];
+     
+        var columns = [[
+                {field: 'kpi_values', title: '<b style="color:red">KPI完成额</b>', width: 80, sortable: true, formatter: g.parseFloat},
+                {field: 'trans_values', title: '交易金额', width: 80, sortable: true, formatter: g.parseFloat},
+                {field: 'new_trans_nums', title: '交易人数', width: 80, sortable: true},
+                {field: 'register_nums', title: '注册人数', width: 80, sortable: true},
+                {field: 'real_register_nums', title: '注册人数', width: 80, sortable: true},
+                {field: 'trans_nums', title: '交易人数', width: 80, sortable: true},
+                {field: 'today_regtrans_nums', title: '当日注册<br/>并交易人数', width: 80, sortable: true},
+                {field: 'realname_nums', title: '实名人数', width: 80, sortable: true},
+                {field: 'bind_nums', title: '绑定人数', width: 80, sortable: true},
+                {field: 'new_trans_values', title: '新增交易人数的交易金额', width: 80, sortable: true, formatter: g.parseFloat},
+            ]];
+
+        
+        table.setMaxHeight($("#" + id).height());
+        table.setFixcolumns(fixColumns);
+        table.setColumns(columns);
+        table.loadData(fdata);
+
+        return table;
+    };
+
+        
+    
+
+</script>

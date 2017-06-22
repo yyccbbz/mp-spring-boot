@@ -21,7 +21,7 @@ public class AppTest {
 //            "src\\test\\java\\com\\evergrande\\springboot\\test\\homepage.txt");
 
     File file = new File("E:\\Workspace\\intellij2017\\mp-spring-boot\\src" +
-            "\\test\\java\\com\\evergrande\\springboot\\test\\loanBatch.txt");
+            "\\test\\java\\com\\evergrande\\springboot\\test\\daily.txt");
 
     @Test
     public void testHtml() throws Exception {
@@ -37,7 +37,7 @@ public class AppTest {
                 String s1 = strs[0];
                 String s2 = strs[1];
 
-                String field = "{field: '" + s2 + "', title: '" + s1 + "', width: 80, sortable: true},";
+                String field = "{field: '" + s1 + "', title: '" + s2 + "', width: 80, sortable: true},";
                 System.err.println(field);
             }
 
@@ -59,8 +59,8 @@ public class AppTest {
                 String s1 = strs[0];
                 String s2 = strs[1];
 
-                System.err.println("// " + s1);
-                System.err.println("private String " + s2 + ";");
+                System.err.println("// " + s2);
+                System.err.println("private String " + s1 + ";");
             }
 
         }

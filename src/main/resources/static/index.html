@@ -26,6 +26,18 @@
         $.config = {
             autoInit: true
         };
+
+        (function ($) {
+            $.getUrlParam = function (name)
+            {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null)
+                    return unescape(r[2]);
+                return null;
+            }
+        })(jQuery);
+
     </script>
 
     <script type='text/javascript' src='./js/light7/light7.js' charset='utf-8'></script>
@@ -149,6 +161,7 @@
         <div class="page" id='contractSign'></div>
         <div class="page" id='reviewManager'></div>
         <div class="page" id='loanBatch'></div>
+        <div class="page" id='daily'></div>
     </div>
 
     <div class="nav" onclick="hide(this)">
@@ -190,7 +203,20 @@
                     $("body").width(g.maxWidth);
                     $("body").css("margin", "0 auto");
                 }
-                g.loadPage("homepage", true);
+                /*g.loadPage("homepage", true);*/
+                if(!window.location.href.indexOf("#")){
+                    g.loadPage("homepage", true);
+                }else {
+                    var pid = window.location.href.split("#")[1];
+                    if(!pid){
+                        pid = "homepage";
+                    }
+                    var anima = false;
+                    if(pid === "homepage"){
+                        anima = true;
+                    }
+                    g.loadPage(pid, anima);
+                }
             }else {
                 window.location.href = "/login.html";
             }
@@ -224,8 +250,8 @@
                 "放款":[
                     {"name":'放款',"page":'loanBatch'}
                 ],
-                "统计":[
-                    {"name":'汇总',"page":''}
+                "汇总":[
+                    {"name":'汇总',"page":'daily'}
                 ]
             }
         };

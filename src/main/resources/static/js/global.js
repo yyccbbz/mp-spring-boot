@@ -9,12 +9,11 @@ g.w = window.innerWidth;
 g.h = window.innerHeight;
 
 var p = {}; //pages
-var p1 = {};
-p.final = p1;
 
 var p0 = {};
 p.homepage = p0;
-
+var p1 = {};
+p.daily = p1;
 var p2 = {};
 p.finalReview = p2;
 var p3 = {};
@@ -100,12 +99,9 @@ g.initPageDate = function (pageId) {
 
             window.setTimeout(function () {
                 var ua = window.navigator.userAgent.toLowerCase();
-                if (ua.match(/micromessenger/i)) {
-                    var url = String(window.location.href).split("?")[0];
-                    window.location.href = url + "?ran=" + 10000 * Math.random() + "#" + pageId;
-                } else {
-                    window.location.reload(true);
-                }
+                var url = String(window.location.href).split("?")[0].split("#")[0];
+                url = url + "?ran=" + 10000 * Math.random() + "#" + pageId;
+                window.location.href = url;
             }, 300);
         } catch (e) {
             console.debug(e);
@@ -205,7 +201,7 @@ g.loadToolbar = function (pageId) {
         success: function (text, textStatus) {
             $("#" + pageId + " .top-bar").html(text);
             g.initPageDate(pageId);
-            $("#" + pageId + " .toolbar-menu").click(function(){
+            $("#" + pageId + " .toolbar-menu").click(function () {
                 var nav = $('.g-nav');
                 nav.show(300);
                 nav.children().addClass('navAnimate');

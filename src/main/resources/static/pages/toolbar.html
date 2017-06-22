@@ -12,25 +12,51 @@
         float: right;
         line-height: 30px
     }
+    .nav-icon{
+        width: 30px;
+        height: 30px;
+        position: relative;
+    }
+
+    .nav-icon img {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+
 </style>
 
 <div class="toolbar" style="height:100%;width:100%">
-    <div class="toolbar-menu" onclick="show()">
+
+    <div class="toolbar-menu nav-icon" onclick="show()">
         <span style="display: inline-block;text-align:center;width:35px;height:30px;padding-top:7px">
-            <img alt="菜单" style="width:22px;height:18px;" src="../imgs/menu.png"/>
+            <img alt="菜单" style="width:22px;" src="../imgs/nav.png"/>
         </span>
     </div>
 
-    <div class="toolbar-calender">
-        <div style="position:relative;z-index: 10000;">
-            <div style="position:absolute;margin-top:3px"><span><img src="../imgs/calendar.png"
-                                                                     style="width:29px;height:27px;"/></span></div>
+    <div class="toolbar-calender nav-icon">
+        <div>
+            <div>
+                <span><img src="../imgs/calendar.png" style="width:22px;"/></span>
+            </div>
             <input class="report-date" type="text" placeholder="请点击选择查询日期"
                    style="width:30px;height:30px;font-size:20px;opacity:0"/>
         </div>
     </div>
 
+    <div class="toolbar-calender nav-icon">
+        <div>
+            <div>
+                <span><img src="../imgs/download.png" style="width:22px;"/></span>
+            </div>
+            <a download="somedata.xls" href="#" onclick="return ExcellentExport.excel(this, 'datatable', 'Sheet Name Here');"></a>
+        </div>
+    </div>
+
     <div class="span-date">
-        <!--<a download="somedata.xls" href="#" onclick="return ExcellentExport.excel(this, 'datatable', 'Sheet Name Here');">Export to Excel</a>-->
+
     </div>
 </div>
