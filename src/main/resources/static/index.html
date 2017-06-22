@@ -462,7 +462,8 @@
         }
 
         function doit(type, fn) {
-            return export_table_to_excel('homepage-table', type || 'xlsx', fn);
+            var pid = window.location.href.split("#")[1];
+            return export_table_to_excel(pid+'-table', type || 'xlsx', fn);
         }
 
     </script>
