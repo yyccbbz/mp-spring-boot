@@ -1,0 +1,219 @@
+<html>
+<head>
+    <title>SheetJS JS-XLSX In-Browser HTML Table Export Demo</title>
+    <style>
+        .xport, .btn {
+            display: inline;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none
+        }
+    </style>
+</head>
+<body>
+<!-- SheetJS js-xlsx library -->
+<script type="text/javascript" src="./js/js-xlsx-0.10.5/shim.js"></script>
+<script type="text/javascript" src="./js/js-xlsx-0.10.5/xlsx.full.min.js"></script>
+
+<!-- FileSaver.js is the library of choice for Chrome -->
+<script type="text/javascript" src="./js/js-xlsx-0.10.5/Blob.js"></script>
+<script type="text/javascript" src="./js/js-xlsx-0.10.5/FileSaver.js"></script>
+
+<!-- FileSaver doesn't work in older IE and newer Safari; Downloadify is the flash fallback -->
+<script type="text/javascript" src="./js/js-xlsx-0.10.5/swfobject.js"></script>
+<script type="text/javascript" src="./js/js-xlsx-0.10.5/downloadify.min.js"></script>
+<script type="text/javascript" src="./js/js-xlsx-0.10.5/base64.min.js"></script>
+
+<script>
+    function s2ab(s) {
+        if (typeof ArrayBuffer !== 'undefined') {
+            var buf = new ArrayBuffer(s.length);
+            var view = new Uint8Array(buf);
+            for (var i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+            return buf;
+        } else {
+            var buf = new Array(s.length);
+            for (var i = 0; i != s.length; ++i) buf[i] = s.charCodeAt(i) & 0xFF;
+            return buf;
+        }
+    }
+
+    function export_table_to_excel(id, type, fn) {
+        var wb = XLSX.utils.table_to_book(document.getElementById(id), {sheet: "Sheet JS"});
+        var wbout = XLSX.write(wb, {bookType: type, bookSST: true, type: 'binary'});
+        var fname = fn || 'test.' + type;
+        try {
+            saveAs(new Blob([s2ab(wbout)], {type: "application/octet-stream"}), fname);
+        } catch (e) {
+            if (typeof console != 'undefined') console.log(e, wbout);
+        }
+        return wbout;
+    }
+
+    function doit(type, fn) {
+        return export_table_to_excel('table', type || 'xlsx', fn);
+    }
+</script>
+<pre>
+<h3><a href="//sheetjs.com/">SheetJS</a> JS-XLSX In-Browser HTML Table Export Demo</h3>
+<b>Compatibility notes:</b>
+- Editable table leverages the HTML5 contenteditable feature, supported in <a
+        href="http://caniuse.com/#search=contenteditable">most browsers</a>
+- IE6-9 require a Flash-based shim to download files.  This demo uses <a href="https://github.com/dcneiner/downloadify">Downloadify.js</a>
+- Safari file download does not work. <a
+        href="https://github.com/eligrey/FileSaver.js/issues/12">FileSaver.js known bug</a>
+
+<b>Editable Data Table:</b> (click a cell to edit it)
+</pre>
+<table id="table" border="1">
+    <tr>
+        <td contenteditable="true">This</td>
+        <td contenteditable="true">is</td>
+        <td contenteditable="true">a</td>
+        <td contenteditable="true">Test</td>
+    </tr>
+    <tr>
+        <td contenteditable="true">Fee</td>
+        <td contenteditable="true">Fi</td>
+        <td contenteditable="true">Fo</td>
+        <td contenteditable="true">Fum</td>
+    </tr>
+    <tr>
+        <td contenteditable="true">Foo</td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true">Bar</td>
+        <td contenteditable="true"></td>
+    </tr>
+    <tr>
+        <td contenteditable="true"></td>
+        <td contenteditable="true">Baz</td>
+        <td contenteditable="true">x1f363</td>
+        <td contenteditable="true">Qux</td>
+    </tr>
+    <tr>
+        <td contenteditable="true">1</td>
+        <td contenteditable="true">2</td>
+        <td contenteditable="true">3</td>
+        <td contenteditable="true">4</td>
+    </tr>
+</table>
+<br/>
+<pre><b>Export it!</b></pre>
+<table id="xport">
+    <tr>
+        <td>
+            <pre>XLSX Excel 2007+ XML</pre>
+        </td>
+        <td>
+            <!--[if gt IE 9]>-->
+            <p id="xportxlsx" class="xport"><input type="submit" value="Export to XLSX!" onclick="doit('xlsx');"></p>
+            <!--<![endif]-->
+            <p id="xlsxbtn" class="btn">Flash required for actually downloading the generated file.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <pre>XLSB Excel 2007+ Binary</pre>
+        </td>
+        <td>
+            <!--[if gt IE 9]>-->
+            <p id="xportxlsb" class="xport"><input type="submit" value="Export to XLSB!" onclick="doit('xlsb');"></p>
+            <!--<![endif]-->
+            <p id="xlsbbtn" class="btn">Flash required for actually downloading the generated file.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <pre>XLS BIFF2</pre>
+        </td>
+        <td>
+            <!--[if gt IE 9]>-->
+            <p id="xportbiff2" class="xport"><input type="submit" value="Export to XLS!"
+                                                    onclick="doit('biff2', 'test.xls');"></p>
+            <!--<![endif]-->
+            <p id="biff2btn" class="btn">Flash required for actually downloading the generated file.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <pre>ODS</pre>
+        </td>
+        <td>
+            <!--[if gt IE 9]>-->
+            <p id="xportods" class="xport"><input type="submit" value="Export to ODS!" onclick="doit('ods');"></p>
+            <!--<![endif]-->
+            <p id="odsbtn" class="btn">Flash required for actually downloading the generated file.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <pre>Flat ODS</pre>
+        </td>
+        <td>
+            <!--[if gt IE 9]>-->
+            <p id="xportfods" class="xport"><input type="submit" value="Export to FODS!"
+                                                   onclick="doit('fods', 'test.fods');"></p>
+            <!--<![endif]-->
+            <p id="fodsbtn" class="btn">Flash required for actually downloading the generated file.</p>
+        </td>
+    </tr>
+</table>
+<pre><b>Powered by the <a href="//sheetjs.com/opensource">community version of js-xlsx</a></b></pre>
+<script type="text/javascript">var fallback = false;</script>
+<!--[if lte IE 9]>
+<script type="text/javascript">fallback = true;</script><![endif]-->
+<script type="text/javascript">
+    function tableau(pid, iid, fmt, ofile) {
+        if (fallback) {
+            if (document.getElementById(iid)) document.getElementById(iid).hidden = true;
+            Downloadify.create(pid, {
+                swf: 'media/downloadify.swf',
+                downloadImage: 'download.png',
+                width: 100,
+                height: 30,
+                filename: ofile, data: function () {
+                    var o = doit(fmt, ofile);
+                    return window.btoa(o);
+                },
+                transparent: false,
+                append: false,
+                dataType: 'base64',
+                onComplete: function () {
+                    alert('Your File Has Been Saved!');
+                },
+                onCancel: function () {
+                    alert('You have cancelled the saving of this file.');
+                },
+                onError: function () {
+                    alert('You must put something in the File Contents or there will be nothing to save!');
+                }
+            });
+        } else document.getElementById(pid).innerHTML = "";
+    }
+    tableau('biff2btn', 'xportbiff2', 'biff2', 'test.xls');
+    tableau('odsbtn', 'xportods', 'ods', 'test.ods');
+    tableau('fodsbtn', 'xportfods', 'fods', 'test.fods');
+    tableau('xlsbbtn', 'xportxlsb', 'xlsb', 'test.xlsb');
+    tableau('xlsxbtn', 'xportxlsx', 'xlsx', 'test.xlsx');
+
+</script>
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-36810333-1']);
+    _gaq.push(['_setDomainName', 'sheetjs.com']);
+    _gaq.push(['_setAllowLinker', true]);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+</body>
+</html>

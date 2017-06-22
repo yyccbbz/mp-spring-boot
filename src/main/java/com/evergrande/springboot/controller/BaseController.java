@@ -68,7 +68,7 @@ public class BaseController {
                 e.printStackTrace();
             }
             JSONArray values = JSON.parseObject(str).getJSONObject("details").getJSONObject("list").getJSONArray("values");
-            System.out.println("values = " + values);
+//            System.out.println("values = " + values);
             // 首页，申请，电审，初审，复审，终审，审批汇总--24+2
             String[] strarr1 = {"171","172","165","166","167","164","173"};
             // 签约，放款--24+1
@@ -85,7 +85,7 @@ public class BaseController {
                     values.remove(0);
                 }
             }
-            System.err.println("values = " + values);
+//            System.err.println("values = " + values);
             return values.toJSONString();
         }
         return str;

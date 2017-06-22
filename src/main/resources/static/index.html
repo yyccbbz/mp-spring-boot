@@ -195,7 +195,6 @@
 
     <script>
         $(document).ready(function () {
-            //TODO
             var stoken = $.cookie("userName");
 //            console.log(stoken);
             if(stoken){
@@ -204,13 +203,10 @@
                     $("body").css("margin", "0 auto");
                 }
                 /*g.loadPage("homepage", true);*/
-                if(!window.location.href.indexOf("#")){
+                if(window.location.href.indexOf("#") === -1){
                     g.loadPage("homepage", true);
                 }else {
                     var pid = window.location.href.split("#")[1];
-                    if(!pid){
-                        pid = "homepage";
-                    }
                     var anima = false;
                     if(pid === "homepage"){
                         anima = true;
