@@ -2769,6 +2769,7 @@ Device/OS Detection
           }
 
           function handleDayClick(e) {
+              console.debug("day clicked");
               if (!allowItemClick) return;
               var day = $(e.target).parents('.picker-calendar-day');
               if (day.length === 0 && $(e.target).hasClass('picker-calendar-day')) {

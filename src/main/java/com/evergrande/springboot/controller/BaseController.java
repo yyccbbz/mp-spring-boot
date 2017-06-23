@@ -85,7 +85,7 @@ public class BaseController {
                     values.remove(0);
                 }
             }
-//            System.err.println("values = " + values);
+            System.err.println("values = " + values);
             return values.toJSONString();
         }
         return str;
