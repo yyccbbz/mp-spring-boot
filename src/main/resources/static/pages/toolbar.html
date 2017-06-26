@@ -47,12 +47,12 @@
         </div>
     </div>
 
-    <div class="toolbar-calender nav-icon" onclick="exportExcel();">
+    <div class="toolbar-calender nav-icon">
         <div>
             <div>
-                <span><img src="../imgs/download.png" style="width:22px;"/></span>
+                <span><img onclick="exportExcel();" src="../imgs/download.png" style="width:22px;"/></span>
             </div>
-            <a href="" download="exportExcel.xlsx" id="hf"></a>
+            <a href="#" class="external" download="exportExcel.xlsx" id="hf" style="display: none"></a>
         </div>
     </div>
 

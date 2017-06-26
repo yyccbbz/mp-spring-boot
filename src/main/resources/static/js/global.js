@@ -277,8 +277,9 @@ function exportExcel(){
         type: 'POST',
         data: {day: date},
         success: function (data, status) {
-            console.log(data);
-            g.downloadExl(data);
+            var json = JSON.parse(data);
+            // console.log(json);
+            g.downloadExl(json);
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             $.toast("获取数据超时");
@@ -336,7 +337,8 @@ g.downloadExl = function (json, type) {
         } //这里的数据是用来定义导出的格式类型
     ))], {
         type: ""
-    }); //创建二进制对象写入转换好的字节流
+    });
+    //创建二进制对象写入转换好的字节流
     var href = URL.createObjectURL(tmpDown); //创建对象超链接
     document.getElementById("hf").href = href; //绑定a标签
     document.getElementById("hf").click(); //模拟点击实现下载
