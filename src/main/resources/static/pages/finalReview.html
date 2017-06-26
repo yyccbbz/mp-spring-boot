@@ -20,7 +20,7 @@
 <script>
 
     p2.initPage = function () {
-        g.queryData(p2.date, "review/finalReview", function (data) {
+        g.queryData(p2.date, "finalReview", function (data) {
             p2.footTable = p2.initTable(data, "finalReview-table-foot", p2.formatFootTableData);
             $("#finalReview-table").height(g.h - $("#finalReview .top-bar:first").height()
                                             - p2.footTable.scrollTable.height() - $("#finalReview header").height());

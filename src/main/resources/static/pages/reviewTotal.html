@@ -20,7 +20,7 @@
 <script>
 
     p7.initPage = function () {
-        g.queryData(p7.date, "review/reviewTotal", function (data) {
+        g.queryData(p7.date, "reviewTotal", function (data) {
             p7.footTable = p7.initTable(data, "reviewTotal-table-foot", p7.formatFootTableData);
             $("#reviewTotal-table").height(g.h - $("#reviewTotal .top-bar:first").height()
                                             - p7.footTable.scrollTable.height() - $("#reviewTotal header").height());

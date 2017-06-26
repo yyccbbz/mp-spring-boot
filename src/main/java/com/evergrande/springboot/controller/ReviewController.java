@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @Description: 审批类 前端控制器
  */
 @RestController
-@RequestMapping("review")
 public class ReviewController extends BaseController {
 
     @Value(value = "${finalReview_http_id}")

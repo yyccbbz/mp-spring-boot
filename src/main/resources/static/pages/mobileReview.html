@@ -21,7 +21,7 @@
 
     p3.initPage = function () {
         /*url 实际字段*/
-        g.queryData(p3.date, "review/mobileReview", function (data) {
+        g.queryData(p3.date, "mobileReview", function (data) {
             p3.footTable = p3.initTable(data, "mobileReview-table-foot", p3.formatFootTableData);
             $("#mobileReview-table").height(g.h - $("#mobileReview .top-bar:first").height()
                                                 - p3.footTable.scrollTable.height() - $("#mobileReview header").height());

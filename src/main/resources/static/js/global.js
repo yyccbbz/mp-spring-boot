@@ -16,6 +16,8 @@ var p1 = {};
 p.daily = p1;
 var p2 = {};
 p.finalReview = p2;
+p2.finalReview = '{"hours_desc":"时间段","final_review_add_cnt":"新增待审笔数","final_review_add_amt":"新增待审金额",' +
+    '"final_review_finish_cnt":"完成笔数","final_review_finish_amt":"完成金额","final_review_refuse_cnt":"拒绝笔数","final_review_refuse_amt":"拒绝金额"},';
 var p3 = {};
 p.mobileReview = p3;
 var p4 = {};
@@ -277,8 +279,11 @@ function exportExcel(){
         type: 'POST',
         data: {day: date},
         success: function (data, status) {
-            var json = JSON.parse(data);
-            // console.log(json);
+            console.log(typeof data);
+            var str = data.insert(1,p2.finalReview);
+            console.log(str);
+            var json = JSON.parse(str);
+            console.log(json);
             g.downloadExl(json);
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -357,7 +362,7 @@ function s2ab(s) {
 }
 // 将指定的自然数转换为26进制表示。映射关系：[0-25] -> [A-Z]。
 function getCharCol(n) {
-    let temCol = '',
+    var temCol = '',
         s = '',
         m = 0;
     while (n > 0) {

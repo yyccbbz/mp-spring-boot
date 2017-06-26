@@ -13,13 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
  * @Description: 信审专员 前端控制器
  */
 @RestController
-@RequestMapping("reviewManager")
 public class ReviewManagerController extends BaseController {
 
     @Value(value = "${reviewManager_http_id}")
     private String reviewManager_http_id;
 
-    @RequestMapping
+    @RequestMapping("reviewManager")
     public String reviewManager() {
         return parseHttpJsonResult(reviewManager_http_id);
     }

@@ -1,10 +1,9 @@
 package com.evergrande.springboot.test;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.parser.Feature;
-
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,9 +22,15 @@ public class FastJsonTest {
 //        LinkedHashMap<String, String> jsonMap = JSON.parseObject(str, new TypeReference<LinkedHashMap<String, String>>() {
 //        });
 
-        LinkedHashMap map = JSON.parseObject(str, LinkedHashMap.class, Feature.OrderedField);
+//        LinkedHashMap map = JSON.parseObject(str, LinkedHashMap.class, Feature.OrderedField);
 
-        System.out.println("map = " + map);
+        JSONObject jsonObject = JSON.parseObject(str, Feature.OrderedField);
+
+        System.out.println("jsonObject = " + jsonObject);
+
+//        System.out.println("map = " + map);
+        JSONArray values = JSON.parseObject(str, Feature.OrderedField).getJSONObject("details").getJSONObject("list").getJSONArray("values");
+        System.out.println("values = " + values);
     }
 
 }

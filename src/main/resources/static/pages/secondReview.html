@@ -20,7 +20,7 @@
 <script>
 
     p5.initPage = function () {
-        g.queryData(p5.date, "review/secondReview", function (data) {
+        g.queryData(p5.date, "secondReview", function (data) {
             p5.footTable = p5.initTable(data, "secondReview-table-foot", p5.formatFootTableData);
             $("#secondReview-table").height(g.h - $("#secondReview .top-bar:first").height()
                                             - p5.footTable.scrollTable.height() - $("#mobileReview header").height());
