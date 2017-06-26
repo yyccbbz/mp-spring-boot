@@ -321,7 +321,7 @@ var Htable = {
 
         t.setFootTable = function (foot) {
             t.footTable = foot;
-            foot.root.find("tr").css("background-color", "#eae8b5");
+            foot.root.find("tr").css("background-color", "#bbdafb");
             var footHead = foot.root.find("thead:first");
             t.grandfather.height(t.root.height());
             t.fixTable.children("tbody:first").children("tr:last").find("td").css("border-bottom", "none");

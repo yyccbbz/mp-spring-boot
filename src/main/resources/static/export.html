@@ -28,6 +28,24 @@
                 "建议零售价": "defaultPrice",
                 "高(cm)": "height",
                 "商品描述": "Description"
+            }, {
+                "保质期临期预警(天)": "adventLifecycle",
+                "商品标题": "title1",
+                "建议零售价": "defaultPrice",
+                "高(cm)": "height",
+                "商品描述": "Description"
+            } ,{
+                "保质期临期预警(天)": "adventLifecycle",
+                "商品标题": "title2",
+                "建议零售价": "defaultPrice",
+                "高(cm)": "height",
+                "商品描述": "Description"
+            }, {
+                "保质期临期预警(天)": "adventLifecycle",
+                "商品标题": "title3",
+                "建议零售价": "defaultPrice",
+                "高(cm)": "height",
+                "商品描述": "Description"
             }];
 
             function downloadExl(json, type) {
@@ -83,8 +101,8 @@
                     URL.revokeObjectURL(tmpDown); //用URL.revokeObjectURL()来释放这个object URL
                 }, 100);
             }
-
-            function s2ab(s) { //字符串转字符流
+            //字符串转字符流
+            function s2ab(s) {
                 var buf = new ArrayBuffer(s.length);
                 var view = new Uint8Array(buf);
                 for (var i = 0; i != s.length; ++i) {
@@ -96,13 +114,13 @@
             function getCharCol(n) {
                 let temCol = '',
                     s = '',
-                    m = 0
+                    m = 0;
                 while (n > 0) {
-                    m = n % 26 + 1
-                    s = String.fromCharCode(m + 64) + s
-                    n = (n - m) / 26
+                    m = n % 26 + 1;
+                    s = String.fromCharCode(m + 64) + s;
+                    n = (n - m) / 26;
                 }
-                return s
+                return s;
             }
 		</script>
 	</body>

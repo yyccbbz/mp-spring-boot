@@ -44,8 +44,9 @@
     <script type='text/javascript' src='./js/light7/light7-swiper.min.js' charset='utf-8'></script>
 
     <!-- SheetJS js-xlsx library -->
-    <script type="text/javascript" src="./js/js-xlsx-0.10.5/shim.js"></script>
     <script type="text/javascript" src="./js/js-xlsx-0.10.5/xlsx.full.min.js"></script>
+    <script type="text/javascript" src="./js/js-xlsx-0.10.5/shim.js"></script>
+    <script type="text/javascript" src="./js/js-xlsx-0.10.5/jszip.js"></script>
     <!-- FileSaver.js is the library of choice for Chrome -->
     <script type="text/javascript" src="./js/js-xlsx-0.10.5/Blob.js"></script>
     <script type="text/javascript" src="./js/js-xlsx-0.10.5/FileSaver.js"></script>
@@ -105,7 +106,7 @@
             padding: 15px 10px;
             opacity: 0;
             overflow: hidden;
-            background-color: rgb(216, 191, 91);
+            background-color: rgb(187, 218, 251);
             background-position: center;
             background-repeat: no-repeat;
             background-size: 100% 100%;
@@ -436,6 +437,9 @@
         }
 
         /*export excel*/
+
+
+
         function s2ab(s) {
             if (typeof ArrayBuffer !== 'undefined') {
                 var buf = new ArrayBuffer(s.length);

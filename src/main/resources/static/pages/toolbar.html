@@ -42,18 +42,17 @@
             <div>
                 <span><img src="../imgs/calendar.png" style="width:22px;"/></span>
             </div>
-            <input class="report-date" type="text" placeholder="请点击选择查询日期"
+            <input name="selectDate" class="report-date" type="text" placeholder="请点击选择查询日期"
                    style="width:30px;height:30px;font-size:20px;opacity:0"/>
         </div>
     </div>
 
-    <div class="toolbar-calender nav-icon" onclick="doit('xlsx');">
+    <div class="toolbar-calender nav-icon" onclick="exportExcel();">
         <div>
             <div>
                 <span><img src="../imgs/download.png" style="width:22px;"/></span>
             </div>
-            <!--<a download="somedata.xls" href="#" onclick="return ExcellentExport.excel(this, 'datatable', 'Sheet Name Here');"></a>-->
-            <!--<a href="" download="demodata.xlsx" id="hf"></a>-->
+            <a href="" download="exportExcel.xlsx" id="hf"></a>
         </div>
     </div>
 
