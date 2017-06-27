@@ -343,7 +343,7 @@ g.downloadExl = function (json, pageId, type) {
     //创建二进制对象写入转换好的字节流
     var href = URL.createObjectURL(tmpDown); //创建对象超链接
     document.getElementById("hf").href = href; //绑定a标签
-    document.getElementById("hf").setAttribute("download", pageId+".xlsx"); //修改下载文件名
+    document.getElementById("hf").setAttribute("download", pageId + "_" + g.time + ".xlsx"); //修改下载文件名
     document.getElementById("hf").click(); //模拟点击实现下载
     setTimeout(function () { //延时释放
         URL.revokeObjectURL(tmpDown); //用URL.revokeObjectURL()来释放这个object URL
