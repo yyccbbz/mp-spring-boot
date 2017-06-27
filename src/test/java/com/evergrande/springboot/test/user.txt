@@ -1,0 +1,9 @@
+id,主键
+login_name,登录名称
+user_name,用户姓名
+password,密码
+email,邮箱
+role_type,用户角色
+status,用户状态
+create_time,创建时间
+last_time,最后登录时间

@@ -1,0 +1,91 @@
+<header class="bar bar-nav ">
+    <!--<a class="button button-link button-nav pull-left back" href="/">
+        <span class="icon icon-left" style=""></span>
+        返回
+    </a>-->
+    <h1 class='title'>用户管理</h1>
+</header>
+
+<div class="content">
+    <div class="top-bar" style="height:30p11;font-size:13p11;width:98%;margin:0 auto">
+        
+    </div>
+    <div style="width:100%;position: relative">
+        <div id="user-table" style="width:98%;height:200p11;margin: 0 auto;position:relative;"></div>
+        <div id="user-table-foot" style="width:98%;height:200p11;margin: 0 auto;position:relative;"></div>
+    </div>
+</div>
+
+
+<script>
+    
+    p11.initPage = function () {
+        g.queryData(p11.date, "user/list", function (data) {
+            p11.footTable = p11.initTable(data, "user-table-foot", p11.formatFootTableData);
+            $("#user-table").height(g.h- $("#user .top-bar:first").height()
+                                    - p11.footTable.scrollTable.height() - $("#user header").height() );
+            p11.table = p11.initTable(data, "user-table", p11.formatData);
+            p11.table.setFootTable(p11.footTable);
+        });
+    };
+
+    p11.formatData = function(sdata){
+        var data = [];
+
+        for (var i = 0; i < sdata.length; i++) {
+            var d = {};
+            for (var column in sdata[i]) {
+                d[column] = sdata[i][column];
+            }
+            data.push(d);
+        }
+
+        return data;
+    };
+
+    p11.formatFootTableData = function(sdata){
+        var data = [];
+
+        /*for (var i = sdata.length-2; i < sdata.length; i++) {
+            var d = {};
+            for (var column in sdata[i]) {
+                d[column] = sdata[i][column];
+            }
+            data.push(d);
+        }*/
+
+        return data;
+    };
+
+    p11.initTable =function(data, id, format){
+
+        var fdata = format(data);
+        var table = Htable.create(id);
+        
+        var fixColumns = [[
+            {field: 'id', title: '主键', width: 80, sortable: true},
+            ]];
+     
+        var columns = [[
+                {field: 'login_name', title: '登录名称', width: 80, sortable: true},
+                {field: 'user_name', title: '用户姓名', width: 80, sortable: true},
+                {field: 'password', title: '密码', width: 80, sortable: true},
+                {field: 'email', title: '邮箱', width: 80, sortable: true},
+                {field: 'role_type', title: '用户角色', width: 80, sortable: true},
+                {field: 'status', title: '用户状态', width: 80, sortable: true},
+                {field: 'create_time', title: '创建时间', width: 80, sortable: true},
+                {field: 'last_time', title: '最后登录时间', width: 80, sortable: true},
+            ]];
+
+        table.setMaxHeight($("#" + id).height());
+        table.setFixcolumns(fixColumns);
+        table.setColumns(columns);
+        table.loadData(fdata);
+
+        return table;
+    };
+
+        
+    
+
+</script>

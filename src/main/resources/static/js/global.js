@@ -33,6 +33,9 @@ p.reviewManager = p9;
 var p10 = {};
 p.loanBatch = p10;
 
+var p11 = {};
+p.loanBatch = p11;
+
 //命名空间的问题
 
 

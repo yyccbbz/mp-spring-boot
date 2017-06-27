@@ -166,6 +166,7 @@
         <div class="page" id='reviewManager'></div>
         <div class="page" id='loanBatch'></div>
         <div class="page" id='daily'></div>
+        <div class="page" id='user'></div>
     </div>
 
     <div class="nav" onclick="hide(this)">
@@ -430,40 +431,6 @@
             n.module.stop().css({'left':0}).children().css("opacity",'1').last().children().html(" ").attr('data-page',"");
             $(e).stop().hide(300);
             setTimeout(function(){$(e).removeClass('show')},300);
-        }
-
-        /*export excel*/
-
-
-
-        function s2ab(s) {
-            if (typeof ArrayBuffer !== 'undefined') {
-                var buf = new ArrayBuffer(s.length);
-                var view = new Uint8Array(buf);
-                for (var i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
-                return buf;
-            } else {
-                var buf = new Array(s.length);
-                for (var i = 0; i != s.length; ++i) buf[i] = s.charCodeAt(i) & 0xFF;
-                return buf;
-            }
-        }
-
-        function export_table_to_excel(id, type, fn) {
-            var wb = XLSX.utils.table_to_book(document.getElementById(id), {sheet: "Sheet JS"});
-            var wbout = XLSX.write(wb, {bookType: type, bookSST: true, type: 'binary'});
-            var fname = fn || 'test.' + type;
-            try {
-                saveAs(new Blob([s2ab(wbout)], {type: "application/octet-stream"}), fname);
-            } catch (e) {
-                if (typeof console != 'undefined') console.log(e, wbout);
-            }
-            return wbout;
-        }
-
-        function doit(type, fn) {
-            var pid = window.location.href.split("#")[1];
-            return export_table_to_excel(pid+'-table', type || 'xlsx', fn);
         }
 
     </script>
