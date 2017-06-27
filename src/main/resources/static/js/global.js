@@ -16,8 +16,6 @@ var p1 = {};
 p.daily = p1;
 var p2 = {};
 p.finalReview = p2;
-p2.finalReview = '{"hours_desc":"时间段","final_review_add_cnt":"新增待审笔数","final_review_add_amt":"新增待审金额",' +
-    '"final_review_finish_cnt":"完成笔数","final_review_finish_amt":"完成金额","final_review_refuse_cnt":"拒绝笔数","final_review_refuse_amt":"拒绝金额"},';
 var p3 = {};
 p.mobileReview = p3;
 var p4 = {};
@@ -271,20 +269,19 @@ g.alert = function (message) {
  *      type:
  *
  */
-function exportExcel(){
-    var url = p.currentPageId;
+function exportExcel() {
+    var pageId = p.currentPageId;//p[p.currentPageId].th
+    // console.log(p[pageId].th);
     var date = $("#" + p.currentPageId + " .span-date").text();
     $.ajax({
-        url: "/"+url,
+        url: "/" + pageId,
         type: 'POST',
         data: {day: date},
         success: function (data, status) {
-            console.log(typeof data);
-            var str = data.insert(1,p2.finalReview);
-            console.log(str);
+            var str = data.insert(1, p[pageId].th);
             var json = JSON.parse(str);
-            console.log(json);
-            g.downloadExl(json);
+            // console.log(json);
+            g.downloadExl(json, pageId);
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             $.toast("获取数据超时");
@@ -292,7 +289,7 @@ function exportExcel(){
     });
 }
 
-g.downloadExl = function (json, type) {
+g.downloadExl = function (json, pageId, type) {
     var tmpDown; //导出的二进制对象
     var keyMap = []; //获取键
     for (k in json[0]) {
@@ -326,9 +323,9 @@ g.downloadExl = function (json, type) {
 
     var outputPos = Object.keys(tmpdata); //设置区域,比如表格从A1到D10
     var tmpWB = {
-        SheetNames: ['mySheet'], //保存的表标题
+        SheetNames: ['sheet'], //保存的表标题
         Sheets: {
-            'mySheet': Object.assign({},
+            'sheet': Object.assign({},
                 tmpdata, //内容
                 {
                     '!ref': outputPos[0] + ':' + outputPos[outputPos.length - 1] //设置填充区域
@@ -346,6 +343,7 @@ g.downloadExl = function (json, type) {
     //创建二进制对象写入转换好的字节流
     var href = URL.createObjectURL(tmpDown); //创建对象超链接
     document.getElementById("hf").href = href; //绑定a标签
+    document.getElementById("hf").setAttribute("download", pageId+".xlsx"); //修改下载文件名
     document.getElementById("hf").click(); //模拟点击实现下载
     setTimeout(function () { //延时释放
         URL.revokeObjectURL(tmpDown); //用URL.revokeObjectURL()来释放这个object URL

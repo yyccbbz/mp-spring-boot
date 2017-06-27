@@ -19,6 +19,9 @@
 
 <script>
 
+    p2.th = '{"hours_desc":"时间段","final_review_add_cnt":"新增待审笔数","final_review_add_amt":"新增待审金额",' +
+        '"final_review_finish_cnt":"完成笔数","final_review_finish_amt":"完成金额","final_review_refuse_cnt":"拒绝笔数","final_review_refuse_amt":"拒绝金额"},';
+
     p2.initPage = function () {
         g.queryData(p2.date, "finalReview", function (data) {
             p2.footTable = p2.initTable(data, "finalReview-table-foot", p2.formatFootTableData);

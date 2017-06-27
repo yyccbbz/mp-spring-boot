@@ -19,6 +19,10 @@
 
 <script>
 
+    p3.th = '{"hours_desc":"时间段","mobile_review_add_cnt":"新增待审笔数","mobile_review_add_amt":"新增待审金额",' +
+        '"mobile_review_finish_cnt":"完成笔数","mobile_review_finish_amt":"完成金额","mobile_review_refuse_cnt":"拒绝笔数",' +
+        '"mobile_review_refuse_amt":"拒绝金额","mobile_review_wait_cnt":"待审笔数"},';
+
     p3.initPage = function () {
         /*url 实际字段*/
         g.queryData(p3.date, "mobileReview", function (data) {

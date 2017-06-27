@@ -19,6 +19,9 @@
 
 <script>
 
+    p8.th = '{"dates":"时间段","sign_wait_cnt":"待签笔数","sign_wait_amt":"待签金额","sign_finish_cnt":"签约笔数",' +
+        '"sign_finish_amt":"签约金额","sign_invalid_cnt":"签约失效笔数","sign_invalid_amt":"签约失效金额"},';
+
     p8.initPage = function () {
         g.queryData(p8.date, "contractSign", function (data) {
             p8.footTable = p8.initTable(data, "contractSign-table-foot", p8.formatFootTableData);

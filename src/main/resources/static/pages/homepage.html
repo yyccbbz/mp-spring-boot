@@ -19,6 +19,10 @@
 
 <script>
 
+    p0.th = '{"hours_desc":"时间段","apply_cnt":"申请笔数","apply_amt":"申请金额","first_review_finish_cnt":"初审完成笔数",' +
+        '"second_review_finish_cnt":"复审完成笔数","final_review_finish_cnt":"终审完成笔数","review_accept_cnt":"审批通过笔数",' +
+        '"sign_finish_cnt":"签约笔数","sign_finish_amt":"签约金额","loan_batch_success_cnt":"放款成功笔数","loan_batch_success_amt":"放款成功金额"},';
+
     p0.initPage = function () {
         g.queryData(p0.date, "/homepage", function (data) {
             p0.footTable = p0.initTable(data, "homepage-table-foot", p0.formatFootTableData);

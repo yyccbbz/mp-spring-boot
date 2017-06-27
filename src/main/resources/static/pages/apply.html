@@ -19,6 +19,12 @@
 
 <script>
 
+    p6.th = '{"hours_desc":"时间段","apply_cnt":"申请笔数","apply_amt":"申请金额","apply_reduction_cnt":"优惠利率申请件数",' +
+        '"apply_reduction_amt":"优惠利率申请金额","apply_cnt_m1":"1月期申请笔数","apply_amt_m1":"1月期申请金额",' +
+        '"apply_cnt_m3":"3月期申请笔数","apply_amt_m3":"3月期申请金额","apply_cnt_m6":"6月期申请笔数",' +
+        '"apply_amt_m6":"6月期申请金额","apply_cnt_m12":"12月期申请笔数","apply_amt_m12":"12月期申请金额",' +
+        '"apply_cnt_m24":"24月期申请笔数","apply_amt_m24":"24月期申请金额","apply_cnt_m36":"36月期申请笔数","apply_amt_m36":"36月期申请金额"},';
+
     p6.initPage = function () {
         g.queryData(p6.date, "apply", function (data) {
             p6.footTable = p6.initTable(data, "apply-table-foot", p6.formatFootTableData);
