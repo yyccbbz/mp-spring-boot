@@ -92,6 +92,9 @@ $(document).on("pageInit", function (e, pageId, $page) {
 
 });
 
+
+
+
 g.initPageDate = function (pageId) {
     $("#" + pageId + " .report-date").change(function () {
         //$.showIndicator();
@@ -200,18 +203,30 @@ g.loadPage = function (pageId, noAnimation, param, force) {
 
 g.loadToolbar = function (pageId) {
     $.ajax({
-        url: "/pages/toolbar.html",
+        url: "/pages/toolbar.htm",
         async: false,
         type: 'GET',
         success: function (text, textStatus) {
-            $("#" + pageId + " .top-bar").html(text);
-            g.initPageDate(pageId);
 
-            $("#" + pageId + " .toolbar-menu").click(function () {
-                var nav = $('.g-nav');
-                nav.show(300);
-                nav.children().addClass('navAnimate');
+            $("#" + pageId + " .top-bar").html(text);
+
+            var menu = $('#' + pageId + '  .dl-menu:first').dlmenu(
+                {
+                    animationClasses: {classin: 'dl-animate-in-5', classout: 'dl-animate-out-5'}
+                }
+            );
+
+            $("#" + pageId).click({menu: menu}, function (e) {
+                e.data.menu.closeMenu();
             });
+
+            // $("#" + pageId + " .top-bar").html(text);
+            // g.initPageDate(pageId);
+            // $("#" + pageId + " .toolbar-menu").click(function () {
+            //     var nav = $('.g-nav');
+            //     nav.show(300);
+            //     nav.children().addClass('navAnimate');
+            // });
         }
     });
 };
