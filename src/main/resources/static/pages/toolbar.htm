@@ -1,17 +1,27 @@
 <div class="top-bar" style="font-size:13px;width:98%;margin:0 auto;position:relative">
     <div class="" style="height:30px">
 
-        <span class="span-date">2016-03-16</span>
+        <span class="span-date"></span>&nbsp;&nbsp;
 
         <div style="display:inline-block;margin:0 0 0 0px;z-index: 10;position:relative">
             <div style="position:absolute;z-index: -1;margin-top:3px">
                 <span>
-                    <img src="../imgs/calendar.png" style="width:29px;height:27px;"/>
+                    <img src="../imgs/calendar.png" style="width:22px;"/>
                 </span>
             </div>
-            <input class="report-date" type="text" placeholder="请点击选择查询日期"
+            <input name="selectDate" class="report-date" type="text" placeholder="请点击选择查询日期"
                    style="width:30px;height:30px;font-size:20px;opacity:0"/>
         </div>
+
+        <div id="toolbar-dl" style="display:none; width: 30px;height: 30px; position: relative;">
+            <div>
+                <div>
+                    <span><img onclick="exportExcel();" src="../imgs/download.png" style="width:22px;"/></span>
+                </div>
+                <a href="#" class="external" download="exportExcel.xlsx" id="hf" style="display: none"></a>
+            </div>
+        </div>
+
 
         <div class="site-home" style="width: 30px;height:30px;cursor:pointer;float:right">
             <span style="position:relative;text-align:center">

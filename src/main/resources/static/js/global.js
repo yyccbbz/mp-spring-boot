@@ -123,11 +123,15 @@ g.initPageDate = function (pageId) {
     var cookieDate = $.cookie(pageId);
 
     if (cookieDate && cookieDate !== "null" && cookieDate.length !== 0) {
+        console.log($("#" + pageId + " .span-date"));
+
         $("#" + pageId + " .span-date").text(cookieDate);
         p[pageId].date = cookieDate;
         // alert($.cookie(pageId));
         $.cookie(pageId, null);
     } else {
+        console.log($("#" + pageId + " .span-date"));
+
         $("#" + pageId + " .span-date").text(g.fdate);
         p[pageId].date = g.fdate;
     }
@@ -139,6 +143,8 @@ $(document).on("pageAnimationEnd", function (e, pageId, $page) {
         if (p[pageId] && p[pageId].initPage && !p[pageId].initPaged) {
             p[pageId].initPage();
         }
+        // $('#'+pageId).trigger('click');
+        $(document).trigger('click');
     } catch (e) {
         console.error(e);
     } finally {
@@ -199,6 +205,7 @@ g.loadPage = function (pageId, noAnimation, param, force) {
         g.loadToolbar(pageId);
         load();
     }
+
 };
 
 g.loadToolbar = function (pageId) {
@@ -209,24 +216,22 @@ g.loadToolbar = function (pageId) {
         success: function (text, textStatus) {
 
             $("#" + pageId + " .top-bar").html(text);
+            g.initPageDate(pageId);
+            var menu = $('#' + pageId + ' .dl-menu:first').dlmenu({
+                animationClasses: {classin: 'dl-animate-in-5', classout: 'dl-animate-out-5'}
+            });
 
-            var menu = $('#' + pageId + '  .dl-menu:first').dlmenu(
-                {
-                    animationClasses: {classin: 'dl-animate-in-5', classout: 'dl-animate-out-5'}
-                }
-            );
-
-            $("#" + pageId).click({menu: menu}, function (e) {
+            $(document).click({menu: menu}, function (e) {
                 e.data.menu.closeMenu();
             });
 
-            // $("#" + pageId + " .top-bar").html(text);
-            // g.initPageDate(pageId);
-            // $("#" + pageId + " .toolbar-menu").click(function () {
-            //     var nav = $('.g-nav');
-            //     nav.show(300);
-            //     nav.children().addClass('navAnimate');
-            // });
+            if(g.terminal === 'pc'){
+                $('#toolbar-dl').css("display","inline-block");
+            }
+
+            $('#'+pageId +' .report-refresh').click(function () {
+               window.location.reload();
+            });
         }
     });
 };
