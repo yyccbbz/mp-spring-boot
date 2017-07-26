@@ -60,7 +60,7 @@ public class BaseController {
 
         if (StringUtils.isNotEmpty(id)) {
             String url = base_http_url + id + "&date=" + day;
-//            System.err.println("url =" + url);
+            System.err.println("url =" + url);
             try {
                 str = httpAPIService.doGet(url);
             } catch (Exception e) {

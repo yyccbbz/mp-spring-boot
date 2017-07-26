@@ -16,7 +16,7 @@ public class Application {
         app.addListeners(new ApplicationPidFileWriter("xfxd.pid"));
         app.run(args);
         logger.info("启动成功!");
-        System.err.println("sample started . http://127.0.0.1:9999/");
+//        System.err.println("sample started . http://127.0.0.1:9999/");
     }
 
 }
