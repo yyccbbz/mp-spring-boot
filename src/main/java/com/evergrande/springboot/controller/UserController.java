@@ -6,9 +6,7 @@ import com.evergrande.springboot.service.IUserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,18 +33,10 @@ public class UserController extends BaseController {
         return JSON.toJSONString(list);
     }
 
-    @ResponseBody
-    @RequestMapping("add")
-    public String add(@RequestParam("jsonstr") String jsonstr) {
-
-        System.out.println("jsonstr = " + jsonstr);
-
-        User user = new User();
-        System.out.println("user = " + JSON.toJSONString(user));
-
+    @RequestMapping(value = "", method = RequestMethod.POST)
+    public String postUser(@RequestBody User user) {
         boolean b = userService.insert(user);
-
-        return JSON.toJSONString(b);
+        return "success";
     }
 
 

@@ -18,7 +18,7 @@ import java.util.List;
  * /mybatis-plus/src/test/java/com/baomidou/mybatisplus/test/generator/MysqlGenerator.java
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/u")
 public class TestUserController {
 
     @Autowired
