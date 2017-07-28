@@ -33,7 +33,8 @@ public class UserController extends BaseController {
         return JSON.toJSONString(list);
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @ResponseBody
+    @RequestMapping(value = "add", method = RequestMethod.POST)
     public String postUser(@RequestBody User user) {
         boolean b = userService.insert(user);
         return "success";
