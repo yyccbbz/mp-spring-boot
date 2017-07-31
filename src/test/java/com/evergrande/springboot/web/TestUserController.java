@@ -1,4 +1,4 @@
-package com.evergrande.springboot.controller;
+package com.evergrande.springboot.web;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import com.evergrande.springboot.entity.User;

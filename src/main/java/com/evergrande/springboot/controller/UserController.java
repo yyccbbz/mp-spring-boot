@@ -25,13 +25,13 @@ public class UserController extends BaseController {
     @Autowired
     private IUserService userService;
 
-    @ApiOperation(value = "系统用户列表", notes = "")
+    /*@ApiOperation(value = "系统用户列表", notes = "")
     @ResponseBody
     @RequestMapping("list")
     public String list() {
         List<User> list = userService.selectList(null);
         return JSON.toJSONString(list);
-    }
+    }*/
 
     @ResponseBody
     @RequestMapping(value = "add", method = RequestMethod.POST)
