@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+
+        <link rel="stylesheet" type="text/css" href="/js/semantic/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="/js/slide/qap-tcha.css">
+        <script>
+            var termType = String(navigator.platform).toLocaleLowerCase();
+        </script>
+        <script type="text/javascript" src="/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="/js/jquery-ui.touch.js"></script>
+        <script type="text/javascript" src="/js/slide/qap-tcha.js"></script>
+        <script src="/js/semantic/semantic.min.js"></script>
+        <script src="/js/store.min.js"></script>
+        <script src="/js/jquery.cookie.js"></script>
+
+        <style>
+            body {
+                font-family: Verdana,Arial,Helvetica,sans-serif;
+                margin: 0;
+                background-color:#35b5d3;
+                text-align: center;
+                overflow: hidden;
+            }
+            .title{
+                text-align: center;
+                width: 100%;
+                height: 100px;
+                font-size: 60px;
+                margin-top: 30px;
+                line-height: 100px;
+                color: #fff;
+            }
+            .ui.grid{
+                margin:0;
+            }
+            .login-header {
+                background-color: #0066b1;
+            }
+
+            .ui.white {
+                color: #fff;
+            }
+            .text-center{
+                text-align:center;
+            }
+            .ui.login-div{
+                width:900px;
+                margin:0 auto;
+                padding:15px 30px;
+                border-radius:15px;
+                background-color: #fff
+            }
+
+            #message{
+                font-weight:bolder
+            }
+
+            #QapTcha{
+               
+            }
+
+        </style>
+        <script type="text/javascript">
+            
+            var splidOpt = {
+                disabledSubmit: true,
+                autoSubmit: false,
+                autoRevert: true,
+                txtLock: "请按住滑块，拖动到最右侧",
+                txtUnlock: '验证通过',
+                PHPfile: '/login/slide'
+            };
+
+            var baseHeight = 0;
+            $(document).ready(function () {
+                $('.QapTcha').QapTcha(splidOpt);
+                if (window.localStorage) {
+                    var sp = store.get("pp");
+                    var cp = $.cookie("pp");
+                    if (sp && !cp) {
+                        $.cookie("pp", sp);
+                        store.remove("pp");
+                    }
+                }
+
+                var w = $(window).width();
+                var h = $(window).height();
+                //console.debug(termType);
+                if (termType === "iphone" || termType.indexOf("linux ") >= 0) {//phone
+                    $("#message").css("font-size", "30px");
+                    var windowPer = w * 0.6;
+                    $(".login-div").width(windowPer);
+                    $(".bgMasks").height(75);                
+                    $(".bgSlider").height(75); 
+//                    $(".TxtStatus").css("height", 40+"px");
+                    $(".Slider").width(75);
+                } else if (termType.indexOf("mac") >= 0 || termType.indexOf("win") >= 0) {
+                    $(".login-div").width(300);
+                    $(".input").addClass("big").removeClass("massive");
+                    $("#submit").css("font-size", "20px");
+                }
+                
+                baseHeight = $("#username").parent().height();
+                $("form .field").css("margin-bottom", (baseHeight/3)+"px");
+                $("#QapTcha").css("margin-bottom", (baseHeight/3)+"px");
+                //$("#QapTcha").css("height", 70+"px");
+
+                
+                $("#submit").height($("#username").height());
+                
+                var topHeight = (h - $(".login-div").height() - 60) / 2 - 50;
+                var titleTopHeight = (topHeight - 100) * 0.2;
+
+                $("#top").height(topHeight);
+                $(".title-top").height(titleTopHeight);
+                //console.debug($("#submit"));
+                $("#submit").click(function () {
+                    console.debug("submit");
+                    var name = $("#username").val().replace(/ /g, '');
+                    var pass = $("#password").val().replace(/ /g, '');
+
+                    if (name.length === 0 || pass.length === 0) {
+                        setMessage("用户名密码不能为空");
+                        return;
+                    }
+                    
+                    $.ajax({
+                        url: "/login/doLogin",
+                        async: true,
+                        type: 'POST',
+                        data: {name: name, pass: pass},
+                        success: function (text, textStatus) {
+                            
+                            var o = jQuery.parseJSON(text);
+                            if (o.c === 0) {
+                                try {
+                                    store.set('pp', $.cookie("pp"));
+//                                    var a = $("<a></a>");
+//                                    a.attr("href", "/index");
+//                                    a.appendTo($("body"));
+//                                    a.hide();
+//                                    var span = $("<span>aaa</span>").appendTo(a);
+//                                    window.setTimeout(function () {
+//                                        span.trigger("click");
+//                                    }, 200);
+                                    window.location.href = o.t;
+                                } catch (e) {
+                                    window.location.href = o.t;
+                                }
+                            } else {
+                                setMessage(o.t);
+                                //if (o.c === -2){
+                                refurbishValidate("#QapTcha");
+                                $("#submit").addClass("disabled");
+                                //$('.QapTcha').QapTcha(splidOpt);
+                                //}
+                            }
+                        }
+                    });
+                });
+                $("input").keydown(function () {
+                    if (event.keyCode === 13) {
+                        $("#submit").trigger("click");
+                    }
+                });
+                
+            });
+
+            function initSlide() {
+                $('.QapTcha').QapTcha(splidOpt);
+
+            }
+            
+            function setMessage(text){
+                var margin = (baseHeight/4) + "px 0";
+                $("#message").text(text).css("margin", margin);
+            };
+
+
+        </script>
+
+    </head>
+    <body>
+        <div id="top">
+            <div class="title-top"></div>
+            <div class="title">
+
+            </div>
+        </div>
+        <div class="ui login-div stackable">
+            <form id="login-form" class="ui fluid form">
+                <div class="field">
+                    <div id="message" style="color:red"></div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input massive">
+                        <input id="username" style="border: 2px solid #aaa" type="text" name="userName" placeholder="">
+                        <i class="user icon"></i>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input massive">			
+                        <input id="password" style="border: 2px solid #aaa" type="password" name="password" placeholder="">
+                        <i class="lock icon"></i>
+                    </div>
+                </div>
+                <div class="field ui massive">
+                    <div id="QapTcha" class="QapTcha" style="">			
+                        
+                    </div>
+                </div>
+                <div class="field ui ">
+                    <div id="submit" name="submit" type="submit" style="font-size:50px;" class="ui fluid blue submit button disabled">登&nbsp;&nbsp;&nbsp;录</div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

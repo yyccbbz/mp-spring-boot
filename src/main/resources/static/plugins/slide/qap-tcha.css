@@ -1,0 +1,8 @@
+.QapTcha{float:left;margin-top:0px;width:100%}
+.QapTcha .clr{clear:both;}
+.QapTcha .bgSlider{width:100%;height:100%;float:left;border:1px solid #ddd;background-color:#7ac23c;z-index:101;position:relative;}
+.QapTcha .bgMasks{width:100%;height:100%;background-color:#e8e8e8;z-index:102;position:absolute;top:0;right:0;}
+.QapTcha .Slider{width:42px;height:100%;border:none;background:transparent url('/imgs/slide.png') no-repeat;background-size:cover;cursor:pointer;position:relative;top:0;left:0;z-index:104;}
+.QapTcha .TxtStatus{width:100%;margin-top:7px;text-align:center;font-family:Verdana;font-size:14px;clear:both;position:absolute;top:0;left:0;z-index:103;display:inline-block;border:none;cursor:pointer;line-height:50px;}
+@media all and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm){.QapTcha .TxtStatusFont{background:-webkit-gradient(linear,left top,right top,color-stop(0,#4d4d4d),color-stop(.4,#4d4d4d),color-stop(.5,#fff),color-stop(.6,#4d4d4d),color-stop(1,#4d4d4d));-webkit-background-clip:text;-webkit-text-fill-color:transparent;-webkit-animation:slidetounlock 3s infinite;-webkit-text-size-adjust:none;}}@-webkit-keyframes slidetounlock{0%{background-position:-160px 0}100%{background-position:160px 0}}
+.QapTcha .dropSuccess{color:#4e8b37;-webkit-animation:none;background:-webkit-gradient(linear,left top,right top,color-stop(0,#fff),color-stop(.4,#fff),color-stop(.5,#fff),color-stop(.6,#fff),color-stop(1,#fff));-webkit-background-clip:text;}.QapTcha .dropError{color:#000}.QapTcha .SliderSuccess{background:transparent url('/imgs/slide_ok.png') no-repeat;}
